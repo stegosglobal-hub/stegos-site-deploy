@@ -30,6 +30,11 @@ Version: New version → Deploy**. The URL stays the same, so the website needs 
 
 ## Limits
 
+Built-in abuse protection (edit `LIMITS` in `Code.gs`): a hidden spam-trap field, a minimum
+time-to-submit, at most 3 leads per email address per hour, 10 per minute and 40 per 6 hours
+overall, and one confirmation email per address per 6 hours. Over-limit visitors are shown the
+WhatsApp / email fallback with their details prefilled.
+
 Google allows about 100 emails/day on a free Gmail account and 1,500/day on Google Workspace
 (each lead uses 2: the lead + the confirmation). Set `SEND_CONFIRMATION: false` in `Code.gs` to
 halve that.

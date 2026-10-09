@@ -16,20 +16,27 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const emit = (name, detail) => document.dispatchEvent(new CustomEvent(name, { detail }));
 
-  /* ---------- analytics hook (works with Plausible, GA4/gtag or GTM) ---------- */
-  function track(name, props) {
+  /* ---------- anti-clickjacking ----------
+     GitHub Pages can't send X-Frame-Options / frame-ancestors, so refuse to run inside a frame. */
+  if (window.top !== window.self) {
+    document.documentElement.style.display = "none";
     try {
-      if (typeof window.plausible === "function") window.plausible(name, { props });
-      if (typeof window.gtag === "function") window.gtag("event", name, props);
-      if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: name, ...props });
+      window.top.location = window.self.location.href;
     } catch (_) {
-      /* analytics must never break the page */
+      /* cross-origin parent: the page stays hidden */
     }
   }
-  document.addEventListener("click", (e) => {
-    const el = e.target.closest("[data-track]");
-    if (el) track(el.dataset.track, { location: el.dataset.where || "" });
+
+  /* ---------- no right-click (form fields keep it so copy/paste still works) ---------- */
+  document.addEventListener("contextmenu", (e) => {
+    if (!e.target.closest("input, textarea, [contenteditable]")) e.preventDefault();
   });
+  document.addEventListener("dragstart", (e) => {
+    if (e.target.closest("img, svg")) e.preventDefault();
+  });
+
+  const escapeHTML = (v) =>
+    String(v).replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch]);
 
   /* ---------- config-driven contact details ---------- */
   function waUrl(text) {
@@ -273,6 +280,8 @@
       submitted: istTimestamp(),
       device: window.matchMedia("(pointer: coarse)").matches ? "Mobile / touch" : "Desktop",
       _honey: val("_honey"),
+      // seconds since the page opened: humans never submit within 2 s, bots often do
+      elapsed: String(Math.round(performance.now() / 1000)),
     });
   }
 
@@ -302,7 +311,7 @@
       a.textContent = label;
       if (external) {
         a.target = "_blank";
-        a.rel = "noopener";
+        a.rel = "noopener noreferrer";
       }
       return a;
     };
@@ -364,7 +373,6 @@
           "✓ Thank you — your details have reached the Stegos team. We'll be in touch shortly.",
         );
         form.reset();
-        track("lead_submitted", { location: sourceLabel });
       } else {
         showStatus(statusEl, "error", "We couldn't deliver your message just now. Please", leadText(form, sourceLabel));
       }
@@ -401,21 +409,21 @@
     const m = MARKETS[c.marketplace] || { label: c.marketplace, dot: "" };
     const tone = TONE[c.marketplace] || "brand";
     const stats = c.stats
-      .map((s) => `<div><div class="cs-val">${s.value}</div><div class="cs-label">${s.label}</div></div>`)
+      .map((s) => `<div><div class="cs-val">${escapeHTML(s.value)}</div><div class="cs-label">${escapeHTML(s.label)}</div></div>`)
       .join("");
     return `
-      <article class="case-card tone-${tone}"${withId ? ` id="${c.id}"` : ""} data-market="${c.marketplace}">
+      <article class="case-card tone-${tone}"${withId ? ` id="${escapeHTML(c.id)}"` : ""} data-market="${escapeHTML(c.marketplace)}">
         <div class="case-art">
           <div class="pills">
-            <span class="pill pill-solid">${c.window}</span>
-            <span class="pill"><span class="dotmark ${m.dot}"></span>${m.label}</span>
+            <span class="pill pill-solid">${escapeHTML(c.window)}</span>
+            <span class="pill"><span class="dotmark ${escapeHTML(m.dot)}"></span>${escapeHTML(m.label)}</span>
           </div>
           <svg class="art" viewBox="0 0 400 300" aria-hidden="true"><use href="#art-${ART[i % ART.length]}" /></svg>
           <span class="arrow-btn" aria-hidden="true">${arrowSvg}</span>
         </div>
         <div class="case-body">
-          <h3><a href="case-${c.id}.html">${c.category}</a></h3>
-          <p class="cdesc">${c.summary}</p>
+          <h3><a href="case-${encodeURIComponent(c.id)}.html">${escapeHTML(c.category)}</a></h3>
+          <p class="cdesc">${escapeHTML(c.summary)}</p>
           <div class="case-stats">${stats}</div>
           <span class="case-more">Read full case study ${arrowSvg.replace("<svg ", '<svg width="14" height="14" ')}</span>
         </div>
@@ -451,7 +459,6 @@
     chips.forEach((chip) =>
       chip.addEventListener("click", () => {
         apply(chip.dataset.filter, true);
-        track("case_filter", { location: chip.dataset.filter });
       }),
     );
     apply("all", false);
@@ -549,7 +556,6 @@
         items.forEach((other) => {
           if (other !== item) other.open = false;
         });
-        track("faq_open", { location: item.id || "" });
       }),
     );
   }

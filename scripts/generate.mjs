@@ -153,7 +153,7 @@ const ctaBand = (where, heading = "Want your own account read this way?", text =
               <h2>${esc(heading)}</h2>
               <p>${esc(text)}</p>
             </div>
-            <button class="btn btn-cta btn-lg max-sm:w-full" type="button" data-open="auditModal" data-track="open_audit" data-where="${where}">
+            <button class="btn btn-cta btn-lg max-sm:w-full" type="button" data-open="auditModal">
               Get a free ad audit
               ${arrow}
             </button>
@@ -416,7 +416,7 @@ ${
               </nav>
 
               <div class="mt-10 flex flex-wrap items-center justify-between gap-4">
-                <button class="btn btn-cta btn-lg max-sm:w-full" type="button" data-open="auditModal" data-track="open_audit" data-where="guide_end">
+                <button class="btn btn-cta btn-lg max-sm:w-full" type="button" data-open="auditModal">
                   Get a free ad audit
                   ${arrow}
                 </button>

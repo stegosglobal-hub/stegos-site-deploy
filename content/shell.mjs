@@ -27,6 +27,7 @@ export const CSP = [
 
 /** <head> assets: security policy + font + the page-type stylesheet (home | cases | blog | notfound) */
 export const assets = (bundle) => `<meta http-equiv="Content-Security-Policy" content="${CSP}" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -111,16 +112,16 @@ export function header({ active = "", home = false, caseCount = 0, postCount = 0
           <a href="${p}#process">Process</a>
           <a href="${p}#faq">FAQ</a>
           <a href="${p}#contact">Contact</a>
-          <button class="btn btn-outline nav-links-whatsapp" type="button" data-open="waModal" data-track="open_whatsapp_modal" data-where="nav_mobile">
+          <button class="btn btn-outline nav-links-whatsapp" type="button" data-open="waModal">
             ${waIcon}
             Chat on WhatsApp
           </button>
         </nav>
         <div class="nav-actions">
-          <button class="icon-btn" type="button" data-open="waModal" data-track="open_whatsapp_modal" data-where="nav" aria-label="Chat on WhatsApp">
+          <button class="icon-btn" type="button" data-open="waModal" aria-label="Chat on WhatsApp">
             ${waIcon}
           </button>
-          <button class="btn btn-cta" type="button" data-open="auditModal" data-track="open_audit" data-where="nav">
+          <button class="btn btn-cta" type="button" data-open="auditModal">
             Free audit
             ${arrow}
           </button>
@@ -137,7 +138,7 @@ export function footer({ caseCount = 0, postCount = 0 } = {}) {
           <div>
             <div class="footer-word">Stegos<b>.</b></div>
             <p class="mb-6 max-w-[38rem] text-[1.5rem] leading-relaxed text-[#a9b5d3]">Marketplace advertising, without the guesswork. Amazon, Flipkart and Myntra — built for India.</p>
-            <button class="btn btn-cta" type="button" data-open="auditModal" data-track="open_audit" data-where="footer">
+            <button class="btn btn-cta" type="button" data-open="auditModal">
               Get a free ad audit
               ${arrow}
             </button>
@@ -154,8 +155,8 @@ export function footer({ caseCount = 0, postCount = 0 } = {}) {
             </div>
             <div class="footer-col">
               <span class="footer-h">Get in touch</span>
-              <a href="#" data-contact="email" data-track="click_email" data-where="footer">email</a>
-              <a href="#" data-contact="whatsapp" target="_blank" rel="noopener" data-track="click_whatsapp" data-where="footer">number</a>
+              <a href="#" data-contact="email">email</a>
+              <a href="#" data-contact="whatsapp" target="_blank" rel="noopener noreferrer">number</a>
               <a href="index.html#contact">Send an enquiry</a>
             </div>
           </nav>
@@ -168,7 +169,7 @@ export function footer({ caseCount = 0, postCount = 0 } = {}) {
     </footer>`;
 }
 
-export const FLOATERS = `<a class="wa-fab" href="#" data-wa="Hi Stegos, I'd like to talk about my marketplace ads." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp" data-track="click_whatsapp" data-where="fab">
+export const FLOATERS = `<a class="wa-fab" href="#" data-wa="Hi Stegos, I'd like to talk about my marketplace ads." target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
       ${waIcon}
     </a>
     <button class="to-top" id="toTopBtn" aria-label="Back to top" type="button">
@@ -202,7 +203,7 @@ export const MODALS = `<!-- ---------- WhatsApp modal ---------- -->
             <label class="mp-pill dark"><input type="checkbox" name="wa-marketplace" value="Myntra" /><span class="radio"></span>Myntra</label>
           </div>
         </div>
-        <a class="modal-cta" id="waLink" href="#" target="_blank" rel="noopener" data-track="click_whatsapp" data-where="modal">
+        <a class="modal-cta" id="waLink" href="#" target="_blank" rel="noopener noreferrer">
           Open WhatsApp enquiry
           ${arrow}
         </a>
@@ -225,17 +226,17 @@ export const MODALS = `<!-- ---------- WhatsApp modal ---------- -->
           <div class="mb-4 grid gap-3.5 sm:grid-cols-2">
             <div class="field">
               <label for="auditName">Name</label>
-              <input type="text" id="auditName" name="name" placeholder="Your name" autocomplete="name" required />
+              <input type="text" id="auditName" name="name" maxlength="120" placeholder="Your name" autocomplete="name" required />
             </div>
             <div class="field">
               <label for="auditBrand">Brand name</label>
-              <input type="text" id="auditBrand" name="brand" placeholder="Your brand" autocomplete="organization" required />
+              <input type="text" id="auditBrand" name="brand" maxlength="120" placeholder="Your brand" autocomplete="organization" required />
             </div>
           </div>
           <div class="mb-[1.8rem] grid gap-3.5 sm:grid-cols-2">
             <div class="field">
               <label for="auditEmail">Email</label>
-              <input type="email" id="auditEmail" name="email" placeholder="you@brand.com" autocomplete="email" required />
+              <input type="email" id="auditEmail" name="email" maxlength="160" placeholder="you@brand.com" autocomplete="email" required />
             </div>
             <div class="field">
               <label for="auditPhone">Phone / WhatsApp</label>
@@ -250,7 +251,7 @@ export const MODALS = `<!-- ---------- WhatsApp modal ---------- -->
           </div>
           <div class="field mb-[1.8rem]">
             <label for="auditNotes">What should we look at first?</label>
-            <textarea class="form-textarea" id="auditNotes" name="notes" placeholder="Tell us about your current spend, targets, or the problem you're seeing."></textarea>
+            <textarea class="form-textarea" id="auditNotes" name="notes" maxlength="3000" placeholder="Tell us about your current spend, targets, or the problem you're seeing."></textarea>
           </div>
           <div class="audit-footer flex flex-wrap items-center gap-4">
             <button type="submit" class="modal-cta" id="auditSubmitBtn">

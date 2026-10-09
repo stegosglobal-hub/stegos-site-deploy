@@ -17,6 +17,15 @@ const CONFIG = {
   BRAND: "Stegos Global",
 };
 
+// Abuse limits. The web-app URL is public, so these stop anyone from flooding the inbox
+// or using the confirmation email to spam other people.
+const LIMITS = {
+  MIN_SECONDS: 2, // faster than this between first keystroke and submit = a bot
+  PER_EMAIL_PER_HOUR: 3, // leads accepted from the same email address per hour
+  PER_MINUTE: 10, // leads accepted per minute, all visitors combined
+  PER_6_HOURS: 40, // leads accepted per 6 hours, all visitors combined
+};
+
 // Order of the fields in the email and the sheet: [form field, label]
 const FIELDS = [
   ["source", "Lead type"],
@@ -38,8 +47,12 @@ function doPost(e) {
   try {
     const p = (e && e.parameter) || {};
 
-    // Honeypot: real visitors never fill this hidden field. Pretend success to bots.
+    // Honeypot / timing trap: real visitors never fill the hidden field and take a few
+    // seconds to type. Pretend success to bots so they don't retry.
     if (p._honey) return json_({ success: true });
+    if (p.elapsed !== undefined && p.elapsed !== "" && Number(p.elapsed) < LIMITS.MIN_SECONDS) {
+      return json_({ success: true });
+    }
 
     const lead = {};
     FIELDS.forEach(([key, label]) => (lead[label] = clip_(p[key], key === "message" ? 3000 : 300)));
@@ -50,9 +63,19 @@ function doPost(e) {
       return json_({ success: false, message: "Please fill in name, a valid email and a phone number." });
     }
 
+    const email = lead["Email"].toLowerCase();
+    if (
+      overLimit_("rl:e:" + email, LIMITS.PER_EMAIL_PER_HOUR, 3600) ||
+      overLimit_("rl:min", LIMITS.PER_MINUTE, 60) ||
+      overLimit_("rl:6h", LIMITS.PER_6_HOURS, 21600)
+    ) {
+      return json_({ success: false, message: "Too many requests. Please try again later or WhatsApp us." });
+    }
+
     logToSheet_(lead);
     sendLeadEmail_(lead);
-    if (CONFIG.SEND_CONFIRMATION) sendConfirmation_(lead["Email"]);
+    // at most one confirmation per address every 6 hours
+    if (CONFIG.SEND_CONFIRMATION && !overLimit_("cf:" + email, 1, 21600)) sendConfirmation_(lead["Email"]);
 
     return json_({ success: true });
   } catch (err) {
@@ -137,6 +160,16 @@ function logToSheet_(lead) {
   // Prefix values that start with = + - @ so the sheet never treats them as formulas.
   const safe = (v) => (/^[=+\-@]/.test(v) ? "'" + v : v);
   sheet.appendRow([new Date()].concat(FIELDS.map(([, label]) => safe(lead[label] || ""))));
+}
+
+/** Counts a hit for `key`; true once `max` hits happened inside the window (seconds, max 6 h). */
+function overLimit_(key, max, seconds) {
+  const cache = CacheService.getScriptCache();
+  const k = key.slice(0, 240);
+  const n = Number(cache.get(k) || 0);
+  if (n >= max) return true;
+  cache.put(k, String(n + 1), seconds);
+  return false;
 }
 
 function json_(obj) {

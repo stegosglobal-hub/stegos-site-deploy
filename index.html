@@ -43,6 +43,7 @@
 
     <!--SHELL:ASSETS-->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-WZRJfWvsnNCPcxzZwvyhovnZGqhZaC+8gPGPRbx6wTk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -212,16 +213,16 @@
           <a href="#process">Process</a>
           <a href="#faq">FAQ</a>
           <a href="#contact">Contact</a>
-          <button class="btn btn-outline nav-links-whatsapp" type="button" data-open="waModal" data-track="open_whatsapp_modal" data-where="nav_mobile">
+          <button class="btn btn-outline nav-links-whatsapp" type="button" data-open="waModal">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa" /></svg>
             Chat on WhatsApp
           </button>
         </nav>
         <div class="nav-actions">
-          <button class="icon-btn" type="button" data-open="waModal" data-track="open_whatsapp_modal" data-where="nav" aria-label="Chat on WhatsApp">
+          <button class="icon-btn" type="button" data-open="waModal" aria-label="Chat on WhatsApp">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa" /></svg>
           </button>
-          <button class="btn btn-cta" type="button" data-open="auditModal" data-track="open_audit" data-where="nav">
+          <button class="btn btn-cta" type="button" data-open="auditModal">
             Free audit
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow" /></svg>
           </button>
@@ -246,7 +247,7 @@
               sellers and D2C brands in India.
             </p>
             <div class="flex w-full flex-wrap items-center gap-[1.8rem] lg:w-auto">
-              <button class="btn btn-cta btn-lg max-lg:flex-1" type="button" data-open="auditModal" data-track="open_audit" data-where="hero">
+              <button class="btn btn-cta btn-lg max-lg:flex-1" type="button" data-open="auditModal">
                 Get a free ad audit
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow" /></svg>
               </button>
@@ -442,7 +443,7 @@
                   <li>Weekly testing and spend reallocation</li>
                   <li>Amazon Global Selling account support</li>
                 </ul>
-                <a class="service-link" href="#contact" data-track="cta_service" data-where="amazon">
+                <a class="service-link" href="#contact">
                   Plan this channel
                   <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow" /></svg>
                 </a>
@@ -465,7 +466,7 @@
                   <li>Placement and budget pacing</li>
                   <li>Seller-level reporting and actions</li>
                 </ul>
-                <a class="service-link" href="#contact" data-track="cta_service" data-where="flipkart">
+                <a class="service-link" href="#contact">
                   Plan this channel
                   <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow" /></svg>
                 </a>
@@ -488,7 +489,7 @@
                   <li>SKU-level budget decisions</li>
                   <li>Weekly efficiency and scale plan</li>
                 </ul>
-                <a class="service-link" href="#contact" data-track="cta_service" data-where="myntra">
+                <a class="service-link" href="#contact">
                   Plan this channel
                   <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow" /></svg>
                 </a>
@@ -515,7 +516,7 @@
               <li>Catalog health audits</li>
               <li>Variation &amp; compliance fixes</li>
             </ul>
-            <a class="btn btn-cta max-lg:w-full" href="#contact" data-track="cta_service" data-where="cataloging">Ask about cataloging</a>
+            <a class="btn btn-cta max-lg:w-full" href="#contact">Ask about cataloging</a>
           </div>
         </div>
       </section>
@@ -720,7 +721,7 @@
                 <div class="calc-line"><span>Over 12 months</span><span id="calcAnnual">+₹60.00 L</span></div>
               </div>
               <div class="mt-6">
-                <button class="modal-cta mt-0" id="calcCta" type="button" data-open="auditModal" data-track="calc_to_audit">
+                <button class="modal-cta mt-0" id="calcCta" type="button" data-open="auditModal">
                   Audit my account against this target
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow" /></svg>
                 </button>
@@ -898,7 +899,7 @@
               <span class="tag mb-[1.8rem] text-brand">Straight answers</span>
               <h2 class="h-section mb-4 text-[clamp(2.788rem,3.772vw,5.084rem)]">Questions sellers <em>ask first.</em></h2>
               <p class="mb-6 text-base leading-relaxed text-muted">Short, plain answers. If yours isn't here, ask — we reply with questions about your account, not a sales script.</p>
-              <button class="btn btn-dark btn-lg" type="button" data-open="auditModal" data-track="open_audit" data-where="faq">
+              <button class="btn btn-dark btn-lg" type="button" data-open="auditModal">
                 Ask in a free audit
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow" /></svg>
               </button>
@@ -974,18 +975,18 @@
                   <div class="mb-4 grid gap-3.5 sm:grid-cols-2">
                     <div class="field">
                       <label for="ctName">Name</label>
-                      <input type="text" id="ctName" name="name" placeholder="Your name" autocomplete="name" required />
+                      <input type="text" id="ctName" name="name" maxlength="120" placeholder="Your name" autocomplete="name" required />
                     </div>
                     <div class="field">
                       <label for="ctBrand">Brand name</label>
-                      <input type="text" id="ctBrand" name="brand" placeholder="Your brand" autocomplete="organization" required />
+                      <input type="text" id="ctBrand" name="brand" maxlength="120" placeholder="Your brand" autocomplete="organization" required />
                     </div>
                   </div>
 
                   <div class="mb-[1.8rem] grid gap-3.5 sm:grid-cols-2">
                     <div class="field">
                       <label for="ctEmail">Email</label>
-                      <input type="email" id="ctEmail" name="email" placeholder="you@brand.com" autocomplete="email" required />
+                      <input type="email" id="ctEmail" name="email" maxlength="160" placeholder="you@brand.com" autocomplete="email" required />
                     </div>
                     <div class="field">
                       <label for="ctPhone">Phone / WhatsApp</label>
@@ -1002,7 +1003,7 @@
 
                   <div class="field mb-[1.8rem]">
                     <label for="ctNotes">What should we look at first?</label>
-                    <textarea class="form-textarea" id="ctNotes" name="notes" placeholder="Tell us about your current spend, targets, or the problem you're seeing."></textarea>
+                    <textarea class="form-textarea" id="ctNotes" name="notes" maxlength="3000" placeholder="Tell us about your current spend, targets, or the problem you're seeing."></textarea>
                   </div>
 
                   <div class="form-submit-row mt-[2.2rem] flex flex-wrap items-center gap-4">
@@ -1024,14 +1025,14 @@
 
                 <div class="modal-field">
                   <div class="flabel">Email</div>
-                  <div class="fval"><a href="#" data-contact="email" data-track="click_email" data-where="contact_card">email</a></div>
+                  <div class="fval"><a href="#" data-contact="email">email</a></div>
                 </div>
                 <div class="modal-field">
                   <div class="flabel">WhatsApp</div>
-                  <div class="fval"><a href="#" data-contact="whatsapp" target="_blank" rel="noopener" data-track="click_whatsapp" data-where="contact_card">number</a></div>
+                  <div class="fval"><a href="#" data-contact="whatsapp" target="_blank" rel="noopener noreferrer">number</a></div>
                 </div>
 
-                <a class="modal-cta" href="#" data-wa="Hi Stegos, I'd like to talk about my marketplace ads." target="_blank" rel="noopener" data-track="click_whatsapp" data-where="contact_cta">
+                <a class="modal-cta" href="#" data-wa="Hi Stegos, I'd like to talk about my marketplace ads." target="_blank" rel="noopener noreferrer">
                   Open WhatsApp enquiry
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow" /></svg>
                 </a>
@@ -1050,7 +1051,7 @@
           <div>
             <div class="footer-word">Stegos<b>.</b></div>
             <p class="mb-6 max-w-[38rem] text-[1.5rem] leading-relaxed text-[#a9b5d3]">Marketplace advertising, without the guesswork. Amazon, Flipkart and Myntra — built for India.</p>
-            <button class="btn btn-cta" type="button" data-open="auditModal" data-track="open_audit" data-where="footer">
+            <button class="btn btn-cta" type="button" data-open="auditModal">
               Get a free ad audit
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow" /></svg>
             </button>
@@ -1067,8 +1068,8 @@
             </div>
             <div class="footer-col">
               <span class="footer-h">Get in touch</span>
-              <a href="#" data-contact="email" data-track="click_email" data-where="footer">email</a>
-              <a href="#" data-contact="whatsapp" target="_blank" rel="noopener" data-track="click_whatsapp" data-where="footer">number</a>
+              <a href="#" data-contact="email">email</a>
+              <a href="#" data-contact="whatsapp" target="_blank" rel="noopener noreferrer">number</a>
               <a href="index.html#contact">Send an enquiry</a>
             </div>
           </nav>
@@ -1082,7 +1083,7 @@
     </div>
     </div><!-- /.frame -->
 
-    <a class="wa-fab" href="#" data-wa="Hi Stegos, I'd like to talk about my marketplace ads." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp" data-track="click_whatsapp" data-where="fab">
+    <a class="wa-fab" href="#" data-wa="Hi Stegos, I'd like to talk about my marketplace ads." target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa" /></svg>
     </a>
     <button class="to-top" id="toTopBtn" aria-label="Back to top" type="button">
@@ -1116,7 +1117,7 @@
             <label class="mp-pill dark"><input type="checkbox" name="wa-marketplace" value="Myntra" /><span class="radio"></span>Myntra</label>
           </div>
         </div>
-        <a class="modal-cta" id="waLink" href="#" target="_blank" rel="noopener" data-track="click_whatsapp" data-where="modal">
+        <a class="modal-cta" id="waLink" href="#" target="_blank" rel="noopener noreferrer">
           Open WhatsApp enquiry
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow" /></svg>
         </a>
@@ -1139,17 +1140,17 @@
           <div class="mb-4 grid gap-3.5 sm:grid-cols-2">
             <div class="field">
               <label for="auditName">Name</label>
-              <input type="text" id="auditName" name="name" placeholder="Your name" autocomplete="name" required />
+              <input type="text" id="auditName" name="name" maxlength="120" placeholder="Your name" autocomplete="name" required />
             </div>
             <div class="field">
               <label for="auditBrand">Brand name</label>
-              <input type="text" id="auditBrand" name="brand" placeholder="Your brand" autocomplete="organization" required />
+              <input type="text" id="auditBrand" name="brand" maxlength="120" placeholder="Your brand" autocomplete="organization" required />
             </div>
           </div>
           <div class="mb-[1.8rem] grid gap-3.5 sm:grid-cols-2">
             <div class="field">
               <label for="auditEmail">Email</label>
-              <input type="email" id="auditEmail" name="email" placeholder="you@brand.com" autocomplete="email" required />
+              <input type="email" id="auditEmail" name="email" maxlength="160" placeholder="you@brand.com" autocomplete="email" required />
             </div>
             <div class="field">
               <label for="auditPhone">Phone / WhatsApp</label>
@@ -1164,7 +1165,7 @@
           </div>
           <div class="field mb-[1.8rem]">
             <label for="auditNotes">What should we look at first?</label>
-            <textarea class="form-textarea" id="auditNotes" name="notes" placeholder="Tell us about your current spend, targets, or the problem you're seeing."></textarea>
+            <textarea class="form-textarea" id="auditNotes" name="notes" maxlength="3000" placeholder="Tell us about your current spend, targets, or the problem you're seeing."></textarea>
           </div>
           <div class="audit-footer flex flex-wrap items-center gap-4">
             <button type="submit" class="modal-cta" id="auditSubmitBtn">
@@ -1183,7 +1184,7 @@
     <script src="assets/js/data.js?v=1126f784"></script>
     <script src="assets/vendor/gsap.min.js?v=9396f256" defer></script>
     <script src="assets/vendor/ScrollTrigger.min.js?v=05ca5ad8" defer></script>
-    <script src="assets/js/main.js?v=030ea836" defer></script>
+    <script src="assets/js/main.js?v=140f912a" defer></script>
     <script src="assets/js/motion.js?v=24ed97e3" defer></script>
     <!--/SHELL:TAIL-->
   </body>

@@ -32,6 +32,7 @@
     <meta name="twitter:image" content="https://stegosglobal.com/assets/img/og-image.png" />
 
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-WZRJfWvsnNCPcxzZwvyhovnZGqhZaC+8gPGPRbx6wTk='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -168,16 +169,16 @@
           <a href="index.html#process">Process</a>
           <a href="index.html#faq">FAQ</a>
           <a href="index.html#contact">Contact</a>
-          <button class="btn btn-outline nav-links-whatsapp" type="button" data-open="waModal" data-track="open_whatsapp_modal" data-where="nav_mobile">
+          <button class="btn btn-outline nav-links-whatsapp" type="button" data-open="waModal">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa" /></svg>
             Chat on WhatsApp
           </button>
         </nav>
         <div class="nav-actions">
-          <button class="icon-btn" type="button" data-open="waModal" data-track="open_whatsapp_modal" data-where="nav" aria-label="Chat on WhatsApp">
+          <button class="icon-btn" type="button" data-open="waModal" aria-label="Chat on WhatsApp">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa" /></svg>
           </button>
-          <button class="btn btn-cta" type="button" data-open="auditModal" data-track="open_audit" data-where="nav">
+          <button class="btn btn-cta" type="button" data-open="auditModal">
             Free audit
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow" /></svg>
           </button>
@@ -337,7 +338,7 @@
               </nav>
 
               <div class="mt-10 flex flex-wrap items-center justify-between gap-4">
-                <button class="btn btn-cta btn-lg max-sm:w-full" type="button" data-open="auditModal" data-track="open_audit" data-where="guide_end">
+                <button class="btn btn-cta btn-lg max-sm:w-full" type="button" data-open="auditModal">
                   Get a free ad audit
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow" /></svg>
                 </button>
@@ -380,7 +381,7 @@
               <h2>Want this applied to your own account?</h2>
               <p>The free audit maps spend, structure and catalogue health, and flags where efficiency is leaking.</p>
             </div>
-            <button class="btn btn-cta btn-lg max-sm:w-full" type="button" data-open="auditModal" data-track="open_audit" data-where="guide_band">
+            <button class="btn btn-cta btn-lg max-sm:w-full" type="button" data-open="auditModal">
               Get a free ad audit
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow" /></svg>
             </button>
@@ -396,7 +397,7 @@
           <div>
             <div class="footer-word">Stegos<b>.</b></div>
             <p class="mb-6 max-w-[38rem] text-[1.5rem] leading-relaxed text-[#a9b5d3]">Marketplace advertising, without the guesswork. Amazon, Flipkart and Myntra — built for India.</p>
-            <button class="btn btn-cta" type="button" data-open="auditModal" data-track="open_audit" data-where="footer">
+            <button class="btn btn-cta" type="button" data-open="auditModal">
               Get a free ad audit
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow" /></svg>
             </button>
@@ -413,8 +414,8 @@
             </div>
             <div class="footer-col">
               <span class="footer-h">Get in touch</span>
-              <a href="#" data-contact="email" data-track="click_email" data-where="footer">email</a>
-              <a href="#" data-contact="whatsapp" target="_blank" rel="noopener" data-track="click_whatsapp" data-where="footer">number</a>
+              <a href="#" data-contact="email">email</a>
+              <a href="#" data-contact="whatsapp" target="_blank" rel="noopener noreferrer">number</a>
               <a href="index.html#contact">Send an enquiry</a>
             </div>
           </nav>
@@ -428,7 +429,7 @@
     </div>
     </div><!-- /.frame -->
 
-    <a class="wa-fab" href="#" data-wa="Hi Stegos, I'd like to talk about my marketplace ads." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp" data-track="click_whatsapp" data-where="fab">
+    <a class="wa-fab" href="#" data-wa="Hi Stegos, I'd like to talk about my marketplace ads." target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa" /></svg>
     </a>
     <button class="to-top" id="toTopBtn" aria-label="Back to top" type="button">
@@ -462,7 +463,7 @@
             <label class="mp-pill dark"><input type="checkbox" name="wa-marketplace" value="Myntra" /><span class="radio"></span>Myntra</label>
           </div>
         </div>
-        <a class="modal-cta" id="waLink" href="#" target="_blank" rel="noopener" data-track="click_whatsapp" data-where="modal">
+        <a class="modal-cta" id="waLink" href="#" target="_blank" rel="noopener noreferrer">
           Open WhatsApp enquiry
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow" /></svg>
         </a>
@@ -485,17 +486,17 @@
           <div class="mb-4 grid gap-3.5 sm:grid-cols-2">
             <div class="field">
               <label for="auditName">Name</label>
-              <input type="text" id="auditName" name="name" placeholder="Your name" autocomplete="name" required />
+              <input type="text" id="auditName" name="name" maxlength="120" placeholder="Your name" autocomplete="name" required />
             </div>
             <div class="field">
               <label for="auditBrand">Brand name</label>
-              <input type="text" id="auditBrand" name="brand" placeholder="Your brand" autocomplete="organization" required />
+              <input type="text" id="auditBrand" name="brand" maxlength="120" placeholder="Your brand" autocomplete="organization" required />
             </div>
           </div>
           <div class="mb-[1.8rem] grid gap-3.5 sm:grid-cols-2">
             <div class="field">
               <label for="auditEmail">Email</label>
-              <input type="email" id="auditEmail" name="email" placeholder="you@brand.com" autocomplete="email" required />
+              <input type="email" id="auditEmail" name="email" maxlength="160" placeholder="you@brand.com" autocomplete="email" required />
             </div>
             <div class="field">
               <label for="auditPhone">Phone / WhatsApp</label>
@@ -510,7 +511,7 @@
           </div>
           <div class="field mb-[1.8rem]">
             <label for="auditNotes">What should we look at first?</label>
-            <textarea class="form-textarea" id="auditNotes" name="notes" placeholder="Tell us about your current spend, targets, or the problem you're seeing."></textarea>
+            <textarea class="form-textarea" id="auditNotes" name="notes" maxlength="3000" placeholder="Tell us about your current spend, targets, or the problem you're seeing."></textarea>
           </div>
           <div class="audit-footer flex flex-wrap items-center gap-4">
             <button type="submit" class="modal-cta" id="auditSubmitBtn">
@@ -529,7 +530,7 @@
     <script src="assets/js/data.js?v=1126f784"></script>
     <script src="assets/vendor/gsap.min.js?v=9396f256" defer></script>
     <script src="assets/vendor/ScrollTrigger.min.js?v=05ca5ad8" defer></script>
-    <script src="assets/js/main.js?v=030ea836" defer></script>
+    <script src="assets/js/main.js?v=140f912a" defer></script>
     <script src="assets/js/motion.js?v=24ed97e3" defer></script>
   </body>
 </html>

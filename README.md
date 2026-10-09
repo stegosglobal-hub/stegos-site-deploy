@@ -41,6 +41,19 @@ scripts/generate.mjs        Builds blog*.html, case-*.html, case-studies.html, 4
 Generated files (do not edit by hand): `blog*.html`, `case-*.html`, `case-studies.html`, `404.html`,
 `sitemap.xml`, `assets/css/*.css`, `assets/vendor/*`.
 
+## Security
+
+* **Content-Security-Policy** (meta tag, `content/shell.mjs`): scripts only from this site, network only to the
+  Google Apps Script, no plugins, no inline event handlers. `npm run check` fails if a page lacks it.
+* **No framing**: `main.js` refuses to render inside another site's frame (GitHub Pages can't send
+  `X-Frame-Options`).
+* **Links** that open a new tab use `rel="noopener noreferrer"`; referrer policy is `strict-origin-when-cross-origin`.
+* **Forms**: length limits, hidden spam-trap field and a time-to-submit check; the Apps Script adds rate limits
+  (see `apps-script/README.md`). Visitor text is escaped in emails and protected against spreadsheet formulas.
+* **Right-click** is disabled outside form fields. This only deters casual copying; the HTML/CSS/JS of any
+  website can still be viewed with browser tools.
+* **Dependencies**: `npm audit` is clean (an `overrides` entry pins Tailwind's file watcher to a patched version).
+
 ## Common tasks
 
 * **Add a guide** → append to `content/blog.mjs` (and its `meta` entry), then `npm run build`.

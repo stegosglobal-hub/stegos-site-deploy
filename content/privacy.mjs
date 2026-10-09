@@ -39,9 +39,9 @@ export const privacy = {
       h: "Who it is shared with",
       body: `<p>We use a small number of service providers to run the site. They only process data to provide their service to us:</p>
 <ul>
-  <li><strong>Google</strong> — receives form submissions through a script on our own Google account, which emails them to us, records them in our private Google Sheet and sends you a confirmation email. Google also hosts our business email and serves the website's fonts (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google privacy policy</a>).</li>
-  <li><strong>GitHub Pages</strong> — hosts this website (<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub privacy statement</a>).</li>
-  <li><strong>WhatsApp</strong> — only if you choose to message us there (<a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener">WhatsApp privacy policy</a>).</li>
+  <li><strong>Google</strong> — receives form submissions through a script on our own Google account, which emails them to us, records them in our private Google Sheet and sends you a confirmation email. Google also hosts our business email and serves the website's fonts (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google privacy policy</a>).</li>
+  <li><strong>GitHub Pages</strong> — hosts this website (<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub privacy statement</a>).</li>
+  <li><strong>WhatsApp</strong> — only if you choose to message us there (<a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">WhatsApp privacy policy</a>).</li>
 </ul>
 <p>Some of these providers may store data outside India. We may also disclose information if the law requires it.</p>`,
     },

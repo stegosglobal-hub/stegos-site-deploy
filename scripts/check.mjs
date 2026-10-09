@@ -106,6 +106,17 @@ for (const [file, { html }] of pages) {
   }
 }
 
+// --- security hygiene in markup ---------------------------------------------
+for (const [file, { html }] of pages) {
+  const rel = relative(root, file);
+  if (rel.startsWith("scripts")) continue;
+  for (const m of html.matchAll(/<a\s[^>]*target="_blank"[^>]*>/g))
+    if (!/rel="[^"]*noopener[^"]*noreferrer|rel="[^"]*noreferrer[^"]*noopener/.test(m[0]))
+      fail(`${rel}: new-tab link without rel="noopener noreferrer": ${m[0].slice(0, 80)}`);
+  const inline = html.match(/\son[a-z]+="/i);
+  if (inline) fail(`${rel}: inline event handler (${inline[0].trim()}…) — the CSP blocks these; use main.js`);
+}
+
 // --- lead form endpoint must be configured ----------------------------------
 {
   const cfg = readFileSync(join(root, "assets/js/config.js"), "utf8");

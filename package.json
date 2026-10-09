@@ -2,7 +2,7 @@
   "name": "stegos-site",
   "version": "2.0.0",
   "private": true,
-  "description": "Stegos Global marketing site \u2014 static HTML, Tailwind CSS v4, GSAP.",
+  "description": "Stegos Global marketing site \u00e2\u20ac\u201d static HTML, Tailwind CSS v4, GSAP.",
   "scripts": {
     "dev": "python -m http.server 8080",
     "generate": "node scripts/generate.mjs",
@@ -17,8 +17,11 @@
     "node": ">=18"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.3.3",
+    "@tailwindcss/cli": "4.3.3",
     "gsap": "^3.15.0",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "4.3.3"
+  },
+  "overrides": {
+    "@parcel/watcher": "^2.6.0"
   }
 }
