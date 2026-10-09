@@ -1,0 +1,24 @@
+{
+  "name": "stegos-site",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Stegos Global marketing site \u2014 static HTML, Tailwind CSS v4, GSAP.",
+  "scripts": {
+    "dev": "python -m http.server 8080",
+    "generate": "node scripts/generate.mjs",
+    "css": "node scripts/css.mjs",
+    "css:watch": "node scripts/css.mjs --watch",
+    "vendor": "node scripts/vendor.mjs",
+    "stamp": "node scripts/stamp.mjs",
+    "build": "node scripts/generate.mjs && node scripts/css.mjs && node scripts/vendor.mjs && node scripts/stamp.mjs && node scripts/build.mjs",
+    "check": "node scripts/stamp.mjs --check && node scripts/check.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "gsap": "^3.15.0",
+    "tailwindcss": "^4.3.3"
+  }
+}

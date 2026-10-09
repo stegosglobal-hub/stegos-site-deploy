@@ -1,0 +1,37 @@
+/* Design tokens. Every colour / font / radius used in markup comes from here
+   (Tailwind v4 turns these into utilities: bg-ink, text-muted, rounded-card, ...). */
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --color-ink: #0a1630;
+  --color-ink-2: #11224a;
+  --color-ink-3: #1c2f5e;
+  --color-text: #0a1228;
+  --color-muted: #5a6683;
+  --color-soft: #3b4660;
+  --color-line: #e3e8f3;
+  --color-line-2: #cfd8ee;
+
+  --color-brand: #2750e0;
+  --color-brand-2: #6a45e8;
+  --color-amber: #ff9f1a;
+  --color-amber-2: #ff7a00;
+  --color-ok: #0b9a6d;
+  --color-amazon: #ff9900;
+  --color-flipkart: #2874f0;
+  --color-myntra: #e8325a;
+
+  /* pastel surfaces */
+  --color-sky: #dbe7ff;
+  --color-lilac: #e6e0ff;
+  --color-peach: #ffe6c9;
+  --color-mint: #d3f1e6;
+  --color-rose: #ffdce5;
+  --color-cream: #fff3d6;
+
+  --radius-tile: 22px;
+  --radius-card: 32px;
+  --radius-panel: 44px;
+
+  --breakpoint-xs: 30rem;
+}

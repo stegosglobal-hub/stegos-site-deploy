@@ -1,0 +1,218 @@
+/* Blog = guides. Index page (editorial) + doc-style lesson pages. */
+
+@layer components {
+  /* ---------- index: featured card with a notched title ---------- */
+  .feature-card {
+    @apply relative isolate min-h-[460px] overflow-hidden rounded-card transition-shadow duration-300 lg:min-h-[560px];
+    background: var(--tone);
+  }
+  .feature-card .art {
+    @apply pointer-events-none absolute -right-[6%] -bottom-[8%] h-auto w-[92%] transition-transform duration-500;
+  }
+  .feature-card:hover .art {
+    transform: scale(1.05) rotate(-1.5deg);
+  }
+  .feature-card .f-pills {
+    @apply absolute top-6 right-6 z-[3] flex flex-col items-end gap-2.5 max-sm:top-auto max-sm:bottom-6 max-sm:left-6 max-sm:right-auto max-sm:items-start;
+  }
+  .feature-card .f-pills .pill {
+    @apply text-[13.5px];
+  }
+  .feature-card .f-pills .pill:not(.pill-solid) {
+    color: var(--tone-ink);
+  }
+  .feature-card .arrow-btn {
+    @apply absolute right-6 bottom-6 z-[3] size-[54px];
+  }
+  /* the cut-out title: white block with concave corners that melts into the page sheet */
+  .notch {
+    --r: 28px;
+    @apply absolute top-0 left-0 z-[2] max-w-[calc(100%-var(--r))] rounded-br-[var(--r)] bg-white py-5 pr-7 pb-[22px] lg:max-w-[min(640px,calc(100%-190px))];
+  }
+  .notch::before,
+  .notch::after {
+    content: "";
+    @apply absolute size-[var(--r)];
+    background: radial-gradient(circle at 100% 100%, transparent calc(var(--r) - 0.5px), #fff var(--r));
+  }
+  .notch::before {
+    @apply top-0 right-[calc(var(--r)*-1)];
+  }
+  .notch::after {
+    @apply bottom-[calc(var(--r)*-1)] left-0;
+  }
+  .notch h2 {
+    @apply text-[clamp(26px,3.2vw,44px)] leading-[1.02] tracking-[-0.048em];
+  }
+  .path-card {
+    @apply flex flex-col rounded-card bg-mint p-[26px];
+  }
+  .path-list {
+    counter-reset: lp;
+  }
+  .path-list li {
+    counter-increment: lp;
+  }
+  .path-list a {
+    @apply flex items-center gap-3 rounded-[14px] py-[9px] pr-3 pl-2 text-[14.5px] leading-tight font-semibold transition-colors hover:bg-white/70;
+  }
+  .path-list a::before {
+    content: counter(lp);
+    @apply grid size-[26px] shrink-0 place-items-center rounded-full bg-white text-[12.5px];
+  }
+  .path-list a[aria-current="page"] {
+    @apply bg-white;
+  }
+  .guide-cta {
+    @apply relative flex min-h-[240px] flex-col justify-between overflow-hidden rounded-card bg-brand p-[26px] text-white;
+  }
+  .guide-cta .count {
+    @apply relative grid size-[52px] place-items-center self-start rounded-full border-[1.5px] border-white/70 text-sm font-semibold;
+  }
+
+  /* category rows ("Fashion / Category" style) */
+  .cat-head h2 {
+    @apply text-[clamp(44px,7vw,96px)] leading-[0.95] tracking-[-0.055em];
+  }
+  .scroll-row {
+    @apply grid snap-x snap-mandatory auto-cols-[78%] grid-flow-col gap-5 overflow-x-auto pb-2.5 [scrollbar-width:none] sm:auto-cols-[minmax(280px,1fr)] lg:auto-cols-[calc((100%-40px)/3)];
+  }
+  .scroll-row::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll-row > * {
+    @apply snap-start;
+  }
+
+  /* ---------- lesson (doc) page ---------- */
+  .doc-nav,
+  .doc-toc {
+    @apply sticky top-[100px] max-h-[calc(100vh-120px)] overflow-auto [scrollbar-width:thin];
+  }
+  .doc-nav h4,
+  .doc-toc h4 {
+    @apply mb-3 text-[13px] font-bold tracking-normal text-muted;
+  }
+  .doc-nav .path-list a {
+    @apply rounded-xl text-sm;
+  }
+  .doc-nav .path-list a::before {
+    @apply bg-lilac;
+  }
+  .doc-nav .path-list a[aria-current="page"] {
+    @apply bg-ink text-white;
+  }
+  .doc-nav .path-list a[aria-current="page"]::before {
+    @apply bg-amber text-[#1b0f00];
+  }
+  .doc-toc ol {
+    @apply grid gap-0.5 border-l-2 border-line;
+  }
+  .doc-toc a {
+    @apply -ml-0.5 block border-l-2 border-transparent py-[7px] pl-4 text-sm leading-snug font-medium text-muted transition hover:text-text;
+  }
+  .doc-toc a.active {
+    @apply border-brand font-bold text-brand;
+  }
+  .doc-toc-mobile {
+    @apply mb-7 rounded-tile bg-lilac lg:hidden;
+  }
+  .doc-toc-mobile summary {
+    @apply flex cursor-pointer list-none items-center justify-between px-5 py-4 font-bold;
+  }
+  .doc-toc-mobile summary::-webkit-details-marker {
+    display: none;
+  }
+  .doc-toc-mobile summary::after {
+    content: "+";
+    @apply text-[22px] font-medium;
+  }
+  .doc-toc-mobile[open] summary::after {
+    content: "–";
+  }
+  .doc-toc-mobile ol {
+    @apply grid gap-1 px-5 pb-4;
+  }
+  .doc-toc-mobile a {
+    @apply block py-2 text-[15px] font-semibold;
+  }
+
+  .learn-box {
+    @apply mb-9 rounded-tile bg-mint px-[26px] py-6;
+  }
+  .learn-box h4 {
+    @apply mb-3 text-[15px] tracking-[-0.01em];
+  }
+  .learn-box li {
+    @apply flex gap-3 text-base leading-normal font-medium;
+  }
+  .learn-box li::before {
+    content: "";
+    @apply mt-px size-[22px] shrink-0 rounded-full;
+    background: #fff
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b9a6d' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")
+      center / 12px no-repeat;
+  }
+
+  .prose {
+    @apply text-[17px] leading-[1.78] text-[#26335a] sm:text-lg;
+  }
+  .prose > * + * {
+    @apply mt-[1.15em];
+  }
+  .prose h2 {
+    @apply mt-[2.1em] flex scroll-mt-[100px] flex-col items-baseline gap-2 text-[clamp(28px,3vw,38px)] leading-[1.08] tracking-[-0.042em] text-text sm:flex-row sm:gap-3.5;
+  }
+  .prose h2 .sec-no {
+    @apply shrink-0 rounded-full bg-lilac px-[11px] py-1 text-[15px] font-bold tracking-normal text-brand sm:-translate-y-1;
+  }
+  .prose ul,
+  .prose ol {
+    @apply grid list-[revert] gap-[0.6em] pl-[1.4em];
+  }
+  .prose li::marker {
+    @apply font-bold text-brand;
+  }
+  .prose strong {
+    @apply text-text;
+  }
+  .prose a {
+    @apply text-brand underline underline-offset-[3px];
+  }
+  .prose .formula {
+    @apply rounded-tile bg-ink px-6 py-5 text-[clamp(17px,2.2vw,22px)] leading-normal font-bold tracking-[-0.02em] text-white;
+    box-shadow: 0 0 40px -12px rgba(61, 105, 255, 0.6);
+  }
+  .prose .formula small {
+    @apply mt-1.5 block text-[13.5px] font-medium tracking-normal;
+    color: #a9b5d3;
+  }
+  .prose .callout {
+    @apply rounded-tile border-l-[5px] border-amber bg-cream px-6 py-5 text-[16.5px] leading-relaxed;
+  }
+  .prose .callout b {
+    @apply mb-1 block text-[13.5px] tracking-normal;
+    color: #8a4b00;
+  }
+  .try-box {
+    @apply relative mt-11 overflow-hidden rounded-card bg-ink p-7 text-white;
+    box-shadow: 0 0 50px -14px rgba(61, 105, 255, 0.6);
+  }
+  .try-box::before {
+    content: "";
+    @apply absolute -top-40 -right-[100px] size-80;
+    background: radial-gradient(circle, rgba(61, 105, 255, 0.6), transparent 70%);
+  }
+  .try-box > * {
+    @apply relative;
+  }
+  .pager-card {
+    @apply relative flex flex-col gap-1 rounded-tile border-[1.5px] border-line-2 px-5 py-[18px] transition duration-200 hover:-translate-y-[3px] hover:border-text hover:bg-sky;
+  }
+  .pager-card small {
+    @apply text-[12.5px] font-semibold text-muted;
+  }
+  .pager-card b {
+    @apply text-[17px] leading-tight tracking-[-0.03em];
+  }
+}
