@@ -288,11 +288,12 @@ function blogIndex() {
               <a class="btn btn-dark btn-lg max-sm:w-full" href="case-studies.html">Open the case studies ${arrow}</a>
             </div>
             <div class="grid gap-3">${CASES.slice(0, 3).map(miniCase).join("")}
+              <p class="text-[1.3rem] leading-relaxed text-muted">Client-account figures for the window shown; not a forecast or guarantee.</p>
             </div>
           </div>
         </div>
       </section>
-${ctaBand("blog_index", "Want these ideas applied to your account?")}`;
+${ctaBand("blog_index","Want these ideas applied to your account?")}`;
   return page({
     file: "blog.html",
     bundle: "blog",
@@ -516,6 +517,7 @@ function caseStudiesIndex() {
           <div class="results-grid stagger grid gap-4 lg:grid-cols-3" id="allCases">
             <noscript><p>Enable JavaScript to see the case studies.</p></noscript>
           </div>
+          <p class="mt-6 text-[1.3rem] leading-relaxed text-muted">Figures are each client account's reported metrics for the window shown. They describe those accounts only, not the marketplace as a whole, and are not a forecast or guarantee.</p>
         </div>
       </section>
 

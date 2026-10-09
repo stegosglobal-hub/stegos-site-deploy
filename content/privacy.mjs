@@ -47,7 +47,7 @@ export const privacy = {
     },
     {
       h: "Client advertising account data",
-      body: `<p>When a business hires us to manage its advertising, we work inside its Amazon, Flipkart or Myntra advertising and seller accounts. For that client data we follow these rules, which also reflect the Amazon Ads Partner Network data policies:</p>
+      body: `<p>When a business hires us to manage its advertising, we work inside its Amazon, Flipkart or Myntra advertising and seller accounts. For that client data we follow these rules, which also follow the data-protection policies that Amazon Ads sets for third-party service providers:</p>
 <ul>
   <li><strong>Access only with permission.</strong> We work only through the access the client grants us with each marketplace's own user-permission features. We never ask for, collect or store marketplace passwords or login credentials, and we act in an account only as the client has authorised.</li>
   <li><strong>Only for the client's services.</strong> We use account, campaign and sales data only to provide and report on the services the client engaged us for, and access only the data those services need.</li>
