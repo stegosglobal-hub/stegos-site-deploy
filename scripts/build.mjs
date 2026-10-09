@@ -16,7 +16,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
 
 // every *.html page at the root, plus these:
-const PUBLIC = ["assets", "robots.txt", "sitemap.xml", "CNAME"];
+const PUBLIC = ["assets", ".well-known", "robots.txt", "sitemap.xml", "CNAME"];
 
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });

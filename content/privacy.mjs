@@ -12,7 +12,7 @@ export const privacy = {
   sections: [
     {
       h: "Who we are",
-      body: `<p>Stegos Global ("we", "us") provides marketplace advertising services for Amazon, Flipkart and Myntra sellers in India. For anything about this policy or your data, contact us at <a href="mailto:nishant@stegosglobal.com">nishant@stegosglobal.com</a> or on WhatsApp at +91 87965 69474.</p>`,
+      body: `<p>Stegos Global ("we", "us") provides marketplace advertising services for Amazon, Flipkart and Myntra sellers in India. We are an independent service provider and are not affiliated with or endorsed by Amazon, Flipkart or Myntra. For anything about this policy or your data, contact us at <a href="mailto:nishant@stegosglobal.com">nishant@stegosglobal.com</a> or on WhatsApp at +91 87965 69474.</p>`,
     },
     {
       h: "What we collect",
@@ -46,8 +46,16 @@ export const privacy = {
 <p>Some of these providers may store data outside India. We may also disclose information if the law requires it.</p>`,
     },
     {
-      h: "Client results on this site",
-      body: `<p>Case studies and results are shown by product category, never by brand name, and we do not publish client names without permission.</p>`,
+      h: "Client advertising account data",
+      body: `<p>When a business hires us to manage its advertising, we work inside its Amazon, Flipkart or Myntra advertising and seller accounts. For that client data we follow these rules, which also reflect the Amazon Ads Partner Network data policies:</p>
+<ul>
+  <li><strong>Access only with permission.</strong> We work only through the access the client grants us with each marketplace's own user-permission features. We never ask for, collect or store marketplace passwords or login credentials, and we act in an account only as the client has authorised.</li>
+  <li><strong>Only for the client's services.</strong> We use account, campaign and sales data only to provide and report on the services the client engaged us for, and access only the data those services need.</li>
+  <li><strong>Need-to-know access.</strong> Only team members working on that client's account can see its data.</li>
+  <li><strong>No selling or sharing.</strong> We do not sell, rent, publish or share client data, combine it with other data sources, or use marketplace audience data for interest-based advertising.</li>
+  <li><strong>Deletion.</strong> When an engagement ends, or when the client asks, we delete the client data we hold, except where the law requires us to keep it — and then only for that purpose.</li>
+  <li><strong>Results on this website.</strong> Case studies and figures are anonymised by product category, never shown by brand name, and published only with the client's written approval.</li>
+</ul>`,
     },
     {
       h: "How long we keep it",
@@ -65,8 +73,16 @@ export const privacy = {
 <p>Email <a href="mailto:nishant@stegosglobal.com">nishant@stegosglobal.com</a> with your request. We will respond as quickly as we can. If you are not satisfied with our response, you may approach the Data Protection Board of India.</p>`,
     },
     {
-      h: "Security",
-      body: `<p>The site is served only over HTTPS, and we limit access to enquiries to the people who need them. No method of transmission or storage is completely secure, but we take reasonable steps to protect your data.</p>`,
+      h: "Security and reporting a concern",
+      body: `<p>The site is served only over HTTPS. Enquiries and client data are kept in accounts protected by access controls, available only to the people who need them, and we review who has access when people join or leave a client team. No method of transmission or storage is completely secure, but we take reasonable steps to protect your data.</p>
+<p><strong>To report a security vulnerability, a privacy concern or suspected misuse of data</strong> — including marketplace account data — email <a href="mailto:nishant@stegosglobal.com?subject=Security%20or%20privacy%20report">nishant@stegosglobal.com</a> with the subject "Security or privacy report". Our process:</p>
+<ol>
+  <li>We acknowledge your report within 3 business days.</li>
+  <li>We log it, investigate, and take steps to contain and fix the issue.</li>
+  <li>If a client's data or account may be affected, we tell that client promptly and notify the relevant marketplace or authority where the rules require it.</li>
+  <li>We tell you the outcome and keep a record of the report and what we did.</li>
+</ol>
+<p>Security researchers can also find our contact details at <a href="/.well-known/security.txt">/.well-known/security.txt</a>.</p>`,
     },
     {
       h: "Children",

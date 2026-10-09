@@ -19,6 +19,7 @@ import vm from "node:vm";
 import { posts, meta } from "../content/blog.mjs";
 import { stories } from "../content/cases.mjs";
 import { privacy } from "../content/privacy.mjs";
+import { terms } from "../content/terms.mjs";
 import * as shell from "../content/shell.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -387,6 +388,8 @@ function blogPost(p) {
               <div class="prose">${body}
               </div>
 
+              <p class="mt-8 border-t border-line pt-5 text-[1.3rem] leading-relaxed text-muted">Stegos Global original analysis. The analysis and opinions in this guide are Stegos Global's own. Stegos Global is an independent service provider and is not affiliated with or endorsed by Amazon, Flipkart or Myntra.</p>
+
               <div class="try-box">
                 <span class="tag mb-3.5 text-[#ffd08a]">Try it yourself</span>
                 <h3 class="mb-2.5 text-[2.6rem]">Put the lesson to work</h3>
@@ -660,7 +663,7 @@ function casePage(c) {
             <p class="cs-next"><strong>What happens next.</strong> ${esc(s.next)}</p>
           </div>
 
-          <p class="mt-10 text-[1.3rem] leading-relaxed text-muted">Anonymised by category, not brand — client privacy. Figures are the account's reported metrics for the window shown. Not a forecast or a guarantee of results.</p>
+          <p class="mt-10 text-[1.3rem] leading-relaxed text-muted">Anonymised by category, not brand — client privacy. Figures are this client account's reported metrics for the window shown; they describe this account only, not the marketplace as a whole. Not a forecast or a guarantee of results. Stegos Global is an independent service provider and is not affiliated with or endorsed by Amazon, Flipkart or Myntra.</p>
         </div>
       </section>
 
@@ -735,17 +738,17 @@ ${ctaBand("case_page")}`;
 }
 
 // =====================================================================
-// PRIVACY POLICY
+// LEGAL PAGES (privacy policy, terms of use) — content/privacy.mjs, content/terms.mjs
 // =====================================================================
-function privacyPage() {
-  const toc = privacy.sections.map((s) => ({ id: slugify(s.h), h: s.h }));
+function legalPage({ doc, file, h1, title, description, help }) {
+  const toc = doc.sections.map((s) => ({ id: slugify(s.h), h: s.h }));
   const main = `
       <section class="page-hero pb-4">
         <div class="wrap">
-          ${crumbs([["Home", "index.html"], ["Privacy Policy"]])}
-          <h1 class="max-w-[18ch] text-[clamp(3.2rem,4.6vw,6rem)]" data-hero>Privacy Policy</h1>
-          <p class="lede" data-hero>${esc(privacy.intro)}</p>
-          <p class="mt-5 text-sm font-semibold text-muted" data-hero>Last updated: <time datetime="${privacy.updated}">${fmtDate(privacy.updated)}</time></p>
+          ${crumbs([["Home", "index.html"], [h1]])}
+          <h1 class="max-w-[18ch] text-[clamp(3.2rem,4.6vw,6rem)]" data-hero>${esc(h1)}</h1>
+          <p class="lede" data-hero>${esc(doc.intro)}</p>
+          <p class="mt-5 text-sm font-semibold text-muted" data-hero>Last updated: <time datetime="${doc.updated}">${fmtDate(doc.updated)}</time></p>
         </div>
       </section>
 
@@ -760,10 +763,10 @@ function privacyPage() {
                 </ol>
               </details>
               <div class="prose">
-                ${privacy.sections.map((s, i) => `<h2 id="${slugify(s.h)}"><span class="sec-no">${i + 1}</span><span>${esc(s.h)}</span></h2>\n${s.body}`).join("\n")}
+                ${doc.sections.map((s, i) => `<h2 id="${slugify(s.h)}"><span class="sec-no">${i + 1}</span><span>${esc(s.h)}</span></h2>\n${s.body}`).join("\n")}
               </div>
               <div class="mt-10 rounded-tile bg-lilac p-6">
-                <h2 class="mb-2 text-[2.2rem] tracking-[-0.03em]">Questions about your data?</h2>
+                <h2 class="mb-2 text-[2.2rem] tracking-[-0.03em]">${esc(help)}</h2>
                 <p class="text-soft">Email <a class="font-semibold text-brand underline" href="mailto:nishant@stegosglobal.com">nishant@stegosglobal.com</a> and we'll help.</p>
               </div>
             </article>
@@ -777,18 +780,17 @@ function privacyPage() {
         </div>
       </section>`;
   return page({
-    file: "privacy-policy.html",
+    file,
     bundle: "blog",
-    title: "Privacy Policy — Stegos Global",
-    description:
-      "How Stegos Global collects, uses and protects the personal data you share through stegosglobal.com, and your rights under India's DPDP Act 2023.",
+    title,
+    description,
     main,
     ld: [
       {
         "@context": "https://schema.org",
         "@graph": [
-          { "@type": "WebPage", "@id": `${SITE}/privacy-policy.html#page`, url: `${SITE}/privacy-policy.html`, name: "Privacy Policy — Stegos Global", inLanguage: "en-IN", dateModified: privacy.updated },
-          breadcrumbLd([["Home", ""], ["Privacy Policy", "privacy-policy.html"]]),
+          { "@type": "WebPage", "@id": `${SITE}/${file}#page`, url: `${SITE}/${file}`, name: title, inLanguage: "en-IN", dateModified: doc.updated },
+          breadcrumbLd([["Home", ""], [h1, file]]),
         ],
       },
     ],
@@ -836,7 +838,30 @@ emit("blog.html", blogIndex());
 for (const p of lessons) emit(`blog-${p.slug}.html`, blogPost(p));
 emit("case-studies.html", caseStudiesIndex());
 for (const c of CASES) emit(`case-${c.id}.html`, casePage(c));
-emit("privacy-policy.html", privacyPage());
+emit(
+  "privacy-policy.html",
+  legalPage({
+    doc: privacy,
+    file: "privacy-policy.html",
+    h1: "Privacy Policy",
+    title: "Privacy Policy — Stegos Global",
+    description:
+      "How Stegos Global collects, uses and protects the personal data you share through stegosglobal.com, and your rights under India's DPDP Act 2023.",
+    help: "Questions about your data?",
+  }),
+);
+emit(
+  "terms.html",
+  legalPage({
+    doc: terms,
+    file: "terms.html",
+    h1: "Terms of Use",
+    title: "Terms of Use — Stegos Global",
+    description:
+      "The terms for using stegosglobal.com: independence from Amazon, Flipkart and Myntra, no guarantee of results, acceptable use and governing law.",
+    help: "Questions about these terms?",
+  }),
+);
 emit("404.html", notFound());
 
 // ----- index.html: shared shell + guides teaser -----
@@ -870,6 +895,7 @@ const urls = [
   ["case-studies.html", today, "0.8"],
   ["blog.html", today, "0.8"],
   ["privacy-policy.html", privacy.updated, "0.3"],
+  ["terms.html", terms.updated, "0.3"],
   ...CASES.map((c) => [`case-${c.id}.html`, today, "0.7"]),
   ...lessons.map((p) => [`blog-${p.slug}.html`, p.date, "0.6"]),
 ];

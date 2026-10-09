@@ -152,6 +152,7 @@ export function footer({ caseCount = 0, postCount = 0 } = {}) {
               <a href="blog.html">Guides<sup>${postCount}</sup></a>
               <a href="index.html#faq">FAQ</a>
               <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="terms.html">Terms of Use</a>
             </div>
             <div class="footer-col">
               <span class="footer-h">Get in touch</span>
@@ -163,8 +164,9 @@ export function footer({ caseCount = 0, postCount = 0 } = {}) {
         </div>
         <div class="relative flex flex-wrap justify-between gap-x-6 gap-y-2 border-t border-white/15 pt-5 text-[1.3rem] text-[#8d9abd]">
           <span>© <span data-year>2026</span> Stegos Global — Built for India.</span>
-          <span>Client results are shown by category, never by brand. <a class="underline underline-offset-2 hover:text-amber" href="privacy-policy.html">Privacy Policy</a></span>
+          <span class="flex flex-wrap gap-x-4"><a class="underline underline-offset-2 hover:text-amber" href="privacy-policy.html">Privacy Policy</a><a class="underline underline-offset-2 hover:text-amber" href="terms.html">Terms of Use</a></span>
         </div>
+        <p class="relative mt-4 max-w-[96rem] text-[1.2rem] leading-relaxed text-[#8d9abd]">Stegos Global is an independent service provider and is not affiliated with or endorsed by Amazon, Flipkart or Myntra. Amazon, Amazon Ads, Flipkart, Myntra and related names are trademarks of their respective owners. Client results are anonymised by product category.</p>
       </div>
     </footer>`;
 }
