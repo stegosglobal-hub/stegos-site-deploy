@@ -33,10 +33,18 @@ jobs:
       - run: npm run check
       - if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
+      # Package dist/ the same way actions/upload-pages-artifact does, but WITHOUT skipping
+      # dot-folders, so /.well-known/security.txt is published.
       - if: github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v3
+        name: Package site
+        run: tar --dereference --hard-dereference --directory dist -cvf "$RUNNER_TEMP/artifact.tar" .
+      - if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
         with:
-          path: dist
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
 
   deploy:
     if: github.event_name != 'pull_request'
