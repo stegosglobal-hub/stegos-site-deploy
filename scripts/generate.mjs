@@ -18,6 +18,7 @@ import { fileURLToPath } from "node:url";
 import vm from "node:vm";
 import { posts, meta } from "../content/blog.mjs";
 import { stories } from "../content/cases.mjs";
+import { privacy } from "../content/privacy.mjs";
 import * as shell from "../content/shell.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -48,7 +49,7 @@ const fmtDate = (iso) =>
   new Date(iso + "T00:00:00Z").toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 const wordCount = (html) => html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
 const readMins = (html) => Math.max(1, Math.round(wordCount(html) / 200));
-const arrowSm = arrow.replace("<svg ", '<svg class="size-[15px]" ');
+const arrowSm = arrow.replace("<svg ", '<svg class="size-[1.5rem]" ');
 
 // ---------- guides (posts) ----------
 const TONE_BY_TAG = { Strategy: "strategy", Amazon: "amazon", Flipkart: "flipkart", Myntra: "myntra" };
@@ -138,14 +139,14 @@ const crumbs = (items) =>
     .join('<span class="sep" aria-hidden="true">/</span>')}</nav>`;
 
 const secHead = ({ tag, h2, support, dark = false, tagClass = "text-brand" }) => `
-          <div class="reveal mb-10 grid gap-4 lg:mb-14 lg:grid-cols-[1fr_minmax(260px,380px)] lg:items-end lg:gap-x-14 lg:gap-y-[22px]${dark ? " on-dark" : ""}">
+          <div class="reveal mb-10 grid gap-4 lg:mb-14 lg:grid-cols-[1fr_minmax(26rem,38rem)] lg:items-end lg:gap-x-14 lg:gap-y-[2.2rem]${dark ? " on-dark" : ""}">
             <span class="tag ${tagClass} lg:col-span-2">${esc(tag)}</span>
             <h2 class="h-section">${h2}</h2>
             ${support ? `<p class="leading-relaxed ${dark ? "text-[#a9b5d3]" : "text-muted"}">${esc(support)}</p>` : ""}
           </div>`;
 
 const ctaBand = (where, heading = "Want your own account read this way?", text = "The free audit maps spend, structure and catalogue health, and flags where efficiency is leaking.") => `
-      <section class="pb-[clamp(24px,3vw,40px)]">
+      <section class="pb-[clamp(1.968rem,2.46vw,3.28rem)]">
         <div class="wrap">
           <div class="cta-band reveal">
             <div>
@@ -215,7 +216,7 @@ function blogIndex() {
             <div class="cat-head reveal mb-6 flex flex-wrap items-baseline gap-3.5">
               <h2 id="h-${slugify(t)}">${esc(t)}</h2>
               <span class="text-sm font-semibold text-muted">${list.length} ${list.length === 1 ? "guide" : "guides"}</span>
-              <p class="mt-1 basis-full max-w-[560px] text-base text-muted">${blurb}</p>
+              <p class="mt-1 basis-full max-w-[56rem] text-base text-muted">${blurb}</p>
             </div>
             <div class="scroll-row stagger">${list.map(postCard).join("")}
             </div>
@@ -234,7 +235,7 @@ function blogIndex() {
         </div>
       </section>
 
-      <section class="pb-[clamp(40px,6vw,80px)]">
+      <section class="pb-[clamp(3.28rem,4.92vw,6.56rem)]">
         <div class="wrap">
           <div class="grid gap-4 lg:grid-cols-[1.75fr_1fr]">
             <article class="feature-card tone-${first.tone}">
@@ -253,7 +254,7 @@ function blogIndex() {
                   <span class="tag tone-strategy bg-white/60">Learning path</span>
                   <span class="plus-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-plus" /></svg></span>
                 </div>
-                <h3 class="mb-3.5 text-[clamp(24px,2.4vw,30px)] tracking-[-0.04em]">${lessons.length} lessons, in order.</h3>
+                <h3 class="mb-3.5 text-[clamp(2.4rem,2.4vw,3rem)] tracking-[-0.04em]">${lessons.length} lessons, in order.</h3>
                 <ol class="path-list">
                 ${path}
                 </ol>
@@ -261,14 +262,14 @@ function blogIndex() {
               <div class="guide-cta">
                 <svg class="art" viewBox="0 0 400 300" aria-hidden="true"><use href="#art-orbit" /></svg>
                 <span class="count">${lessons.length}</span>
-                <a class="big-pill" href="#topics">Browse by topic ${arrow.replace("<svg ", '<svg class="size-[18px]" ')}</a>
+                <a class="big-pill" href="#topics">Browse by topic ${arrow.replace("<svg ", '<svg class="size-[1.8rem]" ')}</a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="pb-[clamp(56px,8vw,120px)]" id="topics">
+      <section class="pb-[clamp(4.592rem,6.56vw,9.84rem)]" id="topics">
         <div class="wrap">
           <div class="mb-10 flex flex-wrap gap-2 lg:mb-14" role="navigation" aria-label="Jump to a topic">
             ${tags.map((t) => `<a class="chip" href="#topic-${slugify(t)}">${esc(t)}</a>`).join("\n            ")}
@@ -276,12 +277,12 @@ function blogIndex() {
         </div>
       </section>
 
-      <section class="pb-[clamp(56px,8vw,120px)]">
+      <section class="pb-[clamp(4.592rem,6.56vw,9.84rem)]">
         <div class="wrap">
           <div class="learn-strip reveal grid items-center gap-6 lg:grid-cols-[0.9fr_1.3fr] lg:gap-14">
             <div>
               <span class="tag mb-4 text-brand">See it in practice</span>
-              <h2 class="mb-3 text-[clamp(30px,4vw,52px)] tracking-[-0.048em]">The same ideas, in real accounts.</h2>
+              <h2 class="mb-3 text-[clamp(2.46rem,3.28vw,4.264rem)] tracking-[-0.048em]">The same ideas, in real accounts.</h2>
               <p class="mb-6 leading-relaxed text-soft">Every guide connects to a case study, so you can see the numbers behind the lesson.</p>
               <a class="btn btn-dark btn-lg max-sm:w-full" href="case-studies.html">Open the case studies ${arrow}</a>
             </div>
@@ -343,14 +344,14 @@ function blogPost(p) {
       <section class="page-hero pb-4">
         <div class="wrap">
           ${crumbs([["Home", "index.html"], ["Guides", "blog.html"], [`Lesson ${p.n}`]])}
-          <div class="mb-[22px] flex flex-wrap items-center gap-2.5" data-hero>
+          <div class="mb-[2.2rem] flex flex-wrap items-center gap-2.5" data-hero>
             <span class="pill pill-dark">Lesson ${p.n} of ${p.total}</span>
             <span class="tag tone-${p.tone}">${esc(p.tag)}</span>
             <span class="pill border-line-2 text-muted">${p.level}</span>
           </div>
-          <h1 class="max-w-[18ch] text-[clamp(36px,5.6vw,80px)]" data-hero>${esc(p.title)}</h1>
+          <h1 class="max-w-[18ch] text-[clamp(2.952rem,4.592vw,6.56rem)]" data-hero>${esc(p.title)}</h1>
           <p class="lede" data-hero>${esc(p.description)}</p>
-          <div class="mt-6 flex flex-wrap gap-x-[22px] gap-y-2 text-sm font-semibold text-muted" data-hero>
+          <div class="mt-6 flex flex-wrap gap-x-[2.2rem] gap-y-2 text-sm font-semibold text-muted" data-hero>
             <span>By Stegos Global</span>
             <time datetime="${p.date}">${fmtDate(p.date)}</time>
             <span>${p.mins} min read</span>
@@ -358,9 +359,9 @@ function blogPost(p) {
         </div>
       </section>
 
-      <section class="pb-[clamp(48px,6vw,96px)]">
+      <section class="pb-[clamp(3.936rem,4.92vw,7.872rem)]">
         <div class="wrap">
-          <div class="grid items-start gap-[clamp(28px,4vw,56px)] pt-8 lg:grid-cols-[minmax(0,1fr)_220px] xl:grid-cols-[250px_minmax(0,1fr)_230px]">
+          <div class="grid items-start gap-[clamp(2.296rem,3.28vw,4.592rem)] pt-8 lg:grid-cols-[minmax(0,1fr)_22rem] xl:grid-cols-[25rem_minmax(0,1fr)_23rem]">
             <aside class="doc-nav hidden xl:block" aria-label="Learning path">
               <h4>Learning path</h4>
               <ol class="path-list">
@@ -368,7 +369,7 @@ function blogPost(p) {
               </ol>
             </aside>
 
-            <article class="doc-article mx-auto min-w-0 max-w-[740px] lg:mx-0">
+            <article class="doc-article mx-auto min-w-0 max-w-[74rem] lg:mx-0">
               <details class="doc-toc-mobile">
                 <summary>On this page</summary>
                 <ol>
@@ -388,14 +389,14 @@ function blogPost(p) {
 
               <div class="try-box">
                 <span class="tag mb-3.5 text-[#ffd08a]">Try it yourself</span>
-                <h3 class="mb-2.5 text-[26px]">Put the lesson to work</h3>
-                <p class="text-[16.5px] leading-relaxed text-[#cdd7f1]">${esc(p.practice)}</p>
+                <h3 class="mb-2.5 text-[2.6rem]">Put the lesson to work</h3>
+                <p class="text-[1.65rem] leading-relaxed text-[#cdd7f1]">${esc(p.practice)}</p>
               </div>
 ${
   seeIt.length
     ? `
               <div class="mt-11">
-                <h3 class="mb-4 text-[26px]">See it in a real account</h3>
+                <h3 class="mb-4 text-[2.6rem]">See it in a real account</h3>
                 <div class="grid gap-3">${seeIt.map(miniCase).join("")}
                 </div>
               </div>`
@@ -423,7 +424,7 @@ ${
               </div>
 
               <div class="mt-14 xl:hidden">
-                <h3 class="mb-4 text-[26px]">The full learning path</h3>
+                <h3 class="mb-4 text-[2.6rem]">The full learning path</h3>
                 <div class="rounded-tile bg-mint p-3.5"><ol class="path-list">
                   ${navList}
                 </ol></div>
@@ -498,7 +499,7 @@ function caseStudiesIndex() {
         </div>
       </section>
 
-      <section class="pb-[clamp(56px,8vw,120px)]">
+      <section class="pb-[clamp(4.592rem,6.56vw,9.84rem)]">
         <div class="wrap">
           <div class="reveal mb-7 flex flex-wrap items-center justify-between gap-3.5">
             <div class="chips flex flex-wrap gap-2" role="group" aria-label="Filter case studies by marketplace">
@@ -515,7 +516,7 @@ function caseStudiesIndex() {
         </div>
       </section>
 
-      <section class="pb-[clamp(56px,8vw,120px)]">
+      <section class="pb-[clamp(4.592rem,6.56vw,9.84rem)]">
         <div class="wrap">${secHead({
           tag: "Reading the numbers",
           h2: "How to read <em>these metrics.</em>",
@@ -535,12 +536,12 @@ function caseStudiesIndex() {
         </div>
       </section>
 
-      <section class="pb-[clamp(56px,8vw,120px)]">
+      <section class="pb-[clamp(4.592rem,6.56vw,9.84rem)]">
         <div class="wrap">
           <div class="learn-strip reveal grid items-center gap-6 lg:grid-cols-[0.9fr_1.3fr] lg:gap-14">
             <div>
               <span class="tag mb-4 text-brand">Training guides</span>
-              <h2 class="mb-3 text-[clamp(30px,4vw,52px)] tracking-[-0.048em]">New to these metrics? Start here.</h2>
+              <h2 class="mb-3 text-[clamp(2.46rem,3.28vw,4.264rem)] tracking-[-0.048em]">New to these metrics? Start here.</h2>
               <p class="mb-6 leading-relaxed text-soft">Our short lessons explain ACOS, ROAS and TACoS, campaign structure and scaling — in the order that makes the case studies easy to follow.</p>
               <a class="btn btn-dark btn-lg max-sm:w-full" href="blog.html">Open the guides ${arrow}</a>
             </div>
@@ -593,16 +594,16 @@ function casePage(c) {
       <section class="page-hero tone-${tone}" style="--glow: color-mix(in srgb, var(--a1) 30%, transparent)">
         <div class="wrap">
           ${crumbs([["Home", "index.html"], ["Case studies", "case-studies.html"], [c.category]])}
-          <div class="mb-[22px] flex flex-wrap gap-2" data-hero>
+          <div class="mb-[2.2rem] flex flex-wrap gap-2" data-hero>
             <span class="pill tone-${tone}"><span class="dotmark ${m.dot}"></span>${esc(m.label)}</span>
             <span class="pill border-line-2 text-muted">${esc(c.window)}</span>
           </div>
-          <h1 class="max-w-[18ch] text-[clamp(36px,5.6vw,80px)]" data-hero>${esc(s.headline)}</h1>
+          <h1 class="max-w-[18ch] text-[clamp(2.952rem,4.592vw,6.56rem)]" data-hero>${esc(s.headline)}</h1>
           <p class="lede" data-hero>${esc(c.summary)}</p>
         </div>
       </section>
 
-      <section class="pb-[clamp(40px,5vw,72px)]">
+      <section class="pb-[clamp(3.28rem,4.1vw,5.904rem)]">
         <div class="wrap">
           <div class="stagger grid gap-3.5 lg:grid-cols-3">
             ${c.stats
@@ -611,7 +612,7 @@ function casePage(c) {
               )
               .join("\n            ")}
           </div>
-          <dl class="cs-facts mt-7 grid grid-cols-2 gap-4 border-t-[1.5px] border-line pt-[22px] lg:grid-cols-4">
+          <dl class="cs-facts mt-7 grid grid-cols-2 gap-4 border-t-[1.5px] border-line pt-[2.2rem] lg:grid-cols-4">
             <div><dt>Category</dt><dd>${esc(c.category)}</dd></div>
             <div><dt>Marketplace</dt><dd>${esc(m.label)}</dd></div>
             <div><dt>Window</dt><dd>${esc(c.window)}</dd></div>
@@ -620,8 +621,8 @@ function casePage(c) {
         </div>
       </section>
 
-      <section class="pb-[clamp(56px,8vw,120px)]">
-        <div class="wrap max-w-[1000px]">
+      <section class="pb-[clamp(4.592rem,6.56vw,9.84rem)]">
+        <div class="wrap max-w-[100rem]">
           <div class="cs-block reveal">
             <span class="tag">The starting point</span>
             <h2 class="h-mid mb-5">The situation</h2>
@@ -659,16 +660,16 @@ function casePage(c) {
             <p class="cs-next"><strong>What happens next.</strong> ${esc(s.next)}</p>
           </div>
 
-          <p class="mt-10 text-[13px] leading-relaxed text-muted">Anonymised by category, not brand — client privacy. Figures are the account's reported metrics for the window shown. Not a forecast or a guarantee of results.</p>
+          <p class="mt-10 text-[1.3rem] leading-relaxed text-muted">Anonymised by category, not brand — client privacy. Figures are the account's reported metrics for the window shown. Not a forecast or a guarantee of results.</p>
         </div>
       </section>
 
-      <section class="pb-[clamp(56px,8vw,120px)]">
+      <section class="pb-[clamp(4.592rem,6.56vw,9.84rem)]">
         <div class="wrap">
           <div class="learn-strip reveal grid items-center gap-6 lg:grid-cols-[0.9fr_1.3fr] lg:gap-14">
             <div>
               <span class="tag mb-4 text-brand">Learn the metrics</span>
-              <h2 class="mb-3 text-[clamp(30px,4vw,52px)] tracking-[-0.048em]">Want to understand these numbers?</h2>
+              <h2 class="mb-3 text-[clamp(2.46rem,3.28vw,4.264rem)] tracking-[-0.048em]">Want to understand these numbers?</h2>
               <p class="leading-relaxed text-soft">These short guides explain the terms and decisions behind this account.</p>
             </div>
             <div class="grid gap-3">${s.guides.map((g) => miniGuide(bySlug[g])).join("")}
@@ -677,7 +678,7 @@ function casePage(c) {
         </div>
       </section>
 
-      <section class="pb-[clamp(56px,8vw,120px)]">
+      <section class="pb-[clamp(4.592rem,6.56vw,9.84rem)]">
         <div class="wrap">${secHead({ tag: "More accounts", h2: "Other <em>case studies.</em>" })}
           <div class="results-grid swipe stagger grid gap-4 lg:grid-cols-3" id="moreCases">
             ${others
@@ -734,6 +735,67 @@ ${ctaBand("case_page")}`;
 }
 
 // =====================================================================
+// PRIVACY POLICY
+// =====================================================================
+function privacyPage() {
+  const toc = privacy.sections.map((s) => ({ id: slugify(s.h), h: s.h }));
+  const main = `
+      <section class="page-hero pb-4">
+        <div class="wrap">
+          ${crumbs([["Home", "index.html"], ["Privacy Policy"]])}
+          <h1 class="max-w-[18ch] text-[clamp(3.2rem,4.6vw,6rem)]" data-hero>Privacy Policy</h1>
+          <p class="lede" data-hero>${esc(privacy.intro)}</p>
+          <p class="mt-5 text-sm font-semibold text-muted" data-hero>Last updated: <time datetime="${privacy.updated}">${fmtDate(privacy.updated)}</time></p>
+        </div>
+      </section>
+
+      <section class="pb-[clamp(4.8rem,6vw,8rem)]">
+        <div class="wrap">
+          <div class="grid items-start gap-[clamp(2.4rem,3.6vw,4.8rem)] pt-6 lg:grid-cols-[minmax(0,1fr)_22rem]">
+            <article class="doc-article mx-auto min-w-0 max-w-[74rem] lg:mx-0">
+              <details class="doc-toc-mobile">
+                <summary>On this page</summary>
+                <ol>
+                  ${toc.map((t) => `<li><a href="#${t.id}">${esc(t.h)}</a></li>`).join("\n                  ")}
+                </ol>
+              </details>
+              <div class="prose">
+                ${privacy.sections.map((s, i) => `<h2 id="${slugify(s.h)}"><span class="sec-no">${i + 1}</span><span>${esc(s.h)}</span></h2>\n${s.body}`).join("\n")}
+              </div>
+              <div class="mt-10 rounded-tile bg-lilac p-6">
+                <h2 class="mb-2 text-[2.2rem] tracking-[-0.03em]">Questions about your data?</h2>
+                <p class="text-soft">Email <a class="font-semibold text-brand underline" href="mailto:nishant@stegosglobal.com">nishant@stegosglobal.com</a> and we'll help.</p>
+              </div>
+            </article>
+            <aside class="doc-toc hidden lg:block" aria-label="On this page">
+              <h4>On this page</h4>
+              <ol>
+                ${toc.map((t) => `<li><a href="#${t.id}">${esc(t.h)}</a></li>`).join("\n                ")}
+              </ol>
+            </aside>
+          </div>
+        </div>
+      </section>`;
+  return page({
+    file: "privacy-policy.html",
+    bundle: "blog",
+    title: "Privacy Policy — Stegos Global",
+    description:
+      "How Stegos Global collects, uses and protects the personal data you share through stegosglobal.com, and your rights under India's DPDP Act 2023.",
+    main,
+    ld: [
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          { "@type": "WebPage", "@id": `${SITE}/privacy-policy.html#page`, url: `${SITE}/privacy-policy.html`, name: "Privacy Policy — Stegos Global", inLanguage: "en-IN", dateModified: privacy.updated },
+          breadcrumbLd([["Home", ""], ["Privacy Policy", "privacy-policy.html"]]),
+        ],
+      },
+    ],
+  });
+}
+
+// =====================================================================
 // 404
 // =====================================================================
 function notFound() {
@@ -741,7 +803,7 @@ function notFound() {
       <section class="notfound grid min-h-[70vh] place-items-center pt-28 pb-16 text-center">
         <div class="wrap">
           <div class="notfound-code" aria-hidden="true">404</div>
-          <h1 class="mb-3 text-[clamp(28px,4vw,44px)]">This page isn't in the account.</h1>
+          <h1 class="mb-3 text-[clamp(2.296rem,3.28vw,3.608rem)]">This page isn't in the account.</h1>
           <p class="mb-6 text-muted">The link may be old or mistyped. Here's where most people want to go:</p>
           <div class="flex flex-wrap justify-center gap-3">
             <a class="btn btn-cta btn-lg" href="index.html">Home</a>
@@ -774,6 +836,7 @@ emit("blog.html", blogIndex());
 for (const p of lessons) emit(`blog-${p.slug}.html`, blogPost(p));
 emit("case-studies.html", caseStudiesIndex());
 for (const c of CASES) emit(`case-${c.id}.html`, casePage(c));
+emit("privacy-policy.html", privacyPage());
 emit("404.html", notFound());
 
 // ----- index.html: shared shell + guides teaser -----
@@ -806,6 +869,7 @@ const urls = [
   ["", today, "1.0"],
   ["case-studies.html", today, "0.8"],
   ["blog.html", today, "0.8"],
+  ["privacy-policy.html", privacy.updated, "0.3"],
   ...CASES.map((c) => [`case-${c.id}.html`, today, "0.7"]),
   ...lessons.map((p) => [`blog-${p.slug}.html`, p.date, "0.6"]),
 ];

@@ -30,9 +30,25 @@
   --color-rose: #ffdce5;
   --color-cream: #fff3d6;
 
-  --radius-tile: 22px;
-  --radius-card: 32px;
-  --radius-panel: 44px;
+  /* 1rem = 10px (html font-size is 62.5%), so Tailwind's rem-based scales are re-based here */
+  --spacing: 0.36rem; /* one step = 3.6px, a little tighter than Tailwind's 4px */
+  --text-xs: 1.2rem;
+  --text-sm: 1.4rem;
+  --text-base: 1.6rem;
+  --text-lg: 1.8rem;
+  --text-xl: 2rem;
+  --text-2xl: 2.4rem;
+  --radius-xs: 0.2rem;
+  --radius-sm: 0.4rem;
+  --radius-md: 0.6rem;
+  --radius-lg: 0.8rem;
+  --radius-xl: 1.2rem;
+  --radius-2xl: 1.6rem;
+  --radius-3xl: 2.4rem;
+
+  --radius-tile: 1.8rem;
+  --radius-card: 2.6rem;
+  --radius-panel: 3.4rem;
 
   --breakpoint-xs: 30rem;
 }

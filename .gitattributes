@@ -1,0 +1,7 @@
+# Keep every text file LF in the repo and in working copies (Windows included), so builds,
+# cache stamps and the CSP script hash are identical on every machine and in CI.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary
+*.webp binary

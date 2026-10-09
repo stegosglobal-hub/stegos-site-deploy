@@ -2,25 +2,25 @@
 
 @layer components {
   .case-count {
-    @apply text-[13.5px] font-semibold text-muted;
+    @apply text-[1.35rem] font-semibold text-muted;
   }
 
   /* glossary cards (link each metric to its guide) */
   .glossary-item {
-    @apply relative flex flex-col gap-2.5 rounded-tile p-[24px_22px] transition duration-[250ms] hover:-translate-y-1.5 hover:shadow-[0_24px_40px_-26px_rgba(10,22,48,0.45)];
+    @apply relative flex flex-col gap-2.5 rounded-tile p-[2.4rem_2.2rem] transition duration-[250ms] hover:-translate-y-1.5 hover:shadow-[0_2.4rem_4rem_-2.6rem_rgba(10,22,48,0.45)];
     background: var(--tone);
   }
   .glossary-item h3 {
-    @apply text-[30px] tracking-[-0.05em];
+    @apply text-[3rem] tracking-[-0.05em];
     color: var(--tone-ink);
   }
   .glossary-item p {
-    @apply flex-1 text-[14.5px] leading-relaxed text-soft;
+    @apply flex-1 text-[1.45rem] leading-relaxed text-soft;
   }
 
   /* "learn the metrics" strip */
   .learn-strip {
-    @apply rounded-panel bg-lilac p-[clamp(24px,4vw,52px)];
+    @apply rounded-panel bg-lilac p-[clamp(1.968rem,3.28vw,4.264rem)];
   }
   .learn-strip .mini-card {
     @apply bg-white;
@@ -31,32 +31,32 @@
 
   /* case page: big stat tiles */
   .cs-stat-tile {
-    @apply relative overflow-hidden rounded-card p-[clamp(24px,3vw,40px)] transition duration-[250ms] hover:-translate-y-1.5;
+    @apply relative overflow-hidden rounded-card p-[clamp(1.968rem,2.46vw,3.28rem)] transition duration-[250ms] hover:-translate-y-1.5;
     background: var(--tone);
   }
   .cs-stat-tile:hover {
-    box-shadow: 0 0 40px -10px var(--a1), 0 26px 44px -28px rgba(10, 22, 48, 0.5);
+    box-shadow: 0 0 4rem -1rem var(--a1), 0 2.6rem 4.4rem -2.8rem rgba(10, 22, 48, 0.5);
   }
   .cs-stat-tile .art {
-    @apply pointer-events-none absolute -right-5 -bottom-[22px] h-auto w-[44%] opacity-70;
+    @apply pointer-events-none absolute -right-5 -bottom-[2.2rem] h-auto w-[44%] opacity-70;
   }
   .cs-stat-val {
-    @apply relative text-[clamp(46px,6vw,88px)] leading-[0.95] font-bold tracking-[-0.06em];
+    @apply relative text-[clamp(3.772rem,4.92vw,7.216rem)] leading-[0.95] font-bold tracking-[-0.06em];
     color: var(--tone-ink);
   }
   .cs-stat-label {
-    @apply relative mt-3 text-[15px] font-semibold text-soft;
+    @apply relative mt-3 text-[1.5rem] font-semibold text-soft;
   }
   .cs-facts dt {
-    @apply mb-1 text-[13px] font-semibold text-muted;
+    @apply mb-1 text-[1.3rem] font-semibold text-muted;
   }
   .cs-facts dd {
-    @apply text-[17px] font-bold tracking-[-0.02em];
+    @apply text-[1.7rem] font-bold tracking-[-0.02em];
   }
 
   /* narrative blocks */
   .cs-block + .cs-block {
-    @apply mt-[clamp(44px,6vw,80px)];
+    @apply mt-[clamp(3.608rem,4.92vw,6.56rem)];
   }
   .cs-block > p {
     @apply text-lg leading-[1.75] text-[#26335a];
@@ -69,35 +69,35 @@
   }
   .cs-steps li {
     counter-increment: step;
-    @apply relative rounded-tile bg-lilac py-[18px] pr-[22px] pl-[72px] text-[16.5px] leading-[1.55] font-medium;
+    @apply relative rounded-tile bg-lilac py-[1.8rem] pr-[2.2rem] pl-[5.904rem] text-[1.65rem] leading-[1.55] font-medium;
   }
   .cs-steps li::before {
     content: counter(step);
-    @apply absolute top-3.5 left-[18px] grid size-[38px] place-items-center rounded-full bg-ink text-base font-bold text-white;
+    @apply absolute top-3.5 left-[1.8rem] grid size-[3.8rem] place-items-center rounded-full bg-ink text-base font-bold text-white;
   }
   .cs-read-card {
-    @apply rounded-tile p-[24px_22px];
+    @apply rounded-tile p-[2.4rem_2.2rem];
     background: var(--tone);
   }
   .cs-read-card h3 {
-    @apply mb-2.5 text-[22px] tracking-[-0.035em];
+    @apply mb-2.5 text-[2.2rem] tracking-[-0.035em];
     color: var(--tone-ink);
   }
   .cs-read-card p {
-    @apply text-[15px] leading-relaxed text-[#26335a];
+    @apply text-[1.5rem] leading-relaxed text-[#26335a];
   }
   .cs-lessons li {
-    @apply flex gap-3.5 rounded-tile bg-mint px-5 py-4 text-[17px] leading-[1.55] font-medium;
+    @apply flex gap-3.5 rounded-tile bg-mint px-5 py-4 text-[1.7rem] leading-[1.55] font-medium;
   }
   .cs-lessons li::before {
     content: "";
     @apply size-6 shrink-0 rounded-full;
     background: #fff
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b9a6d' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")
-      center / 13px no-repeat;
+      center / 1.3rem no-repeat;
   }
   .cs-block > p.cs-next {
-    @apply mt-[22px] rounded-tile bg-ink px-6 py-[22px] text-[16.5px] leading-relaxed;
+    @apply mt-[2.2rem] rounded-tile bg-ink px-6 py-[2.2rem] text-[1.65rem] leading-relaxed;
     color: #ffffff;
   }
   .cs-block > p.cs-next strong {

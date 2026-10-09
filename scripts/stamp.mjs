@@ -31,7 +31,10 @@ for (const file of htmlFiles) {
       stale++;
       return assetPath;
     }
-    const hash = createHash("sha1").update(readFileSync(disk)).digest("hex").slice(0, 8);
+    // Hash with line endings normalised, so Windows (CRLF) and Linux/CI (LF) checkouts
+    // produce the same stamp and `npm run check` doesn't flag phantom changes.
+    const content = readFileSync(disk, "utf8").replace(/\r\n/g, "\n");
+    const hash = createHash("sha1").update(content).digest("hex").slice(0, 8);
     return `${assetPath}?v=${hash}`;
   });
   if (after !== before) {

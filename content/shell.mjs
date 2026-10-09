@@ -135,13 +135,13 @@ export function footer({ caseCount = 0, postCount = 0 } = {}) {
         <div class="relative grid gap-10 pb-10 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
           <div>
             <div class="footer-word">Stegos<b>.</b></div>
-            <p class="mb-6 max-w-[380px] text-[15px] leading-relaxed text-[#a9b5d3]">Marketplace advertising, without the guesswork. Amazon, Flipkart and Myntra — built for India.</p>
+            <p class="mb-6 max-w-[38rem] text-[1.5rem] leading-relaxed text-[#a9b5d3]">Marketplace advertising, without the guesswork. Amazon, Flipkart and Myntra — built for India.</p>
             <button class="btn btn-cta" type="button" data-open="auditModal" data-track="open_audit" data-where="footer">
               Get a free ad audit
               ${arrow}
             </button>
           </div>
-          <nav class="grid grid-cols-2 content-start gap-6" aria-label="Footer">
+          <nav class="grid grid-cols-1 content-start gap-6 xs:grid-cols-2" aria-label="Footer">
             <div class="footer-col">
               <span class="footer-h">Explore</span>
               <a href="index.html#services">Services</a>
@@ -149,6 +149,7 @@ export function footer({ caseCount = 0, postCount = 0 } = {}) {
               <a href="case-studies.html">Case Studies<sup>${caseCount}</sup></a>
               <a href="blog.html">Guides<sup>${postCount}</sup></a>
               <a href="index.html#faq">FAQ</a>
+              <a href="privacy-policy.html">Privacy Policy</a>
             </div>
             <div class="footer-col">
               <span class="footer-h">Get in touch</span>
@@ -158,9 +159,9 @@ export function footer({ caseCount = 0, postCount = 0 } = {}) {
             </div>
           </nav>
         </div>
-        <div class="relative flex flex-wrap justify-between gap-x-6 gap-y-2 border-t border-white/15 pt-5 text-[13px] text-[#8d9abd]">
+        <div class="relative flex flex-wrap justify-between gap-x-6 gap-y-2 border-t border-white/15 pt-5 text-[1.3rem] text-[#8d9abd]">
           <span>© <span data-year>2026</span> Stegos Global — Built for India.</span>
-          <span>Client results are shown by category, never by brand, to protect privacy.</span>
+          <span>Client results are shown by category, never by brand. <a class="underline underline-offset-2 hover:text-amber" href="privacy-policy.html">Privacy Policy</a></span>
         </div>
       </div>
     </footer>`;
@@ -193,7 +194,7 @@ export const MODALS = `<!-- ---------- WhatsApp modal ---------- -->
           <div class="fval"><span data-contact="whatsapp">number</span></div>
         </div>
         <div class="modal-field" style="border-bottom: none">
-          <div class="flabel" style="margin-bottom: 10px">Marketplaces you'd like to discuss</div>
+          <div class="flabel" style="margin-bottom: 1rem">Marketplaces you'd like to discuss</div>
           <div class="mp-options" style="margin-bottom: 0">
             <label class="mp-pill dark"><input type="checkbox" name="wa-marketplace" value="Amazon" /><span class="radio"></span>Amazon</label>
             <label class="mp-pill dark"><input type="checkbox" name="wa-marketplace" value="Flipkart" /><span class="radio"></span>Flipkart</label>
@@ -230,9 +231,15 @@ export const MODALS = `<!-- ---------- WhatsApp modal ---------- -->
               <input type="text" id="auditBrand" name="brand" placeholder="Your brand" autocomplete="organization" required />
             </div>
           </div>
-          <div class="field mb-[18px]">
-            <label for="auditEmail">Email</label>
-            <input type="email" id="auditEmail" name="email" placeholder="you@brand.com" autocomplete="email" required />
+          <div class="mb-[1.8rem] grid gap-3.5 sm:grid-cols-2">
+            <div class="field">
+              <label for="auditEmail">Email</label>
+              <input type="email" id="auditEmail" name="email" placeholder="you@brand.com" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="auditPhone">Phone / WhatsApp</label>
+              <input type="tel" id="auditPhone" name="phone" placeholder="+91 98765 43210" autocomplete="tel" inputmode="tel" minlength="8" maxlength="20" required />
+            </div>
           </div>
           <div class="mp-label" id="auditMpLabel">Marketplaces you sell on</div>
           <div class="mp-options" role="group" aria-labelledby="auditMpLabel">
@@ -240,7 +247,7 @@ export const MODALS = `<!-- ---------- WhatsApp modal ---------- -->
             <label class="mp-pill"><input type="checkbox" name="marketplace" value="Flipkart" /><span class="radio"></span>Flipkart</label>
             <label class="mp-pill"><input type="checkbox" name="marketplace" value="Myntra" /><span class="radio"></span>Myntra</label>
           </div>
-          <div class="field mb-[18px]">
+          <div class="field mb-[1.8rem]">
             <label for="auditNotes">What should we look at first?</label>
             <textarea class="form-textarea" id="auditNotes" name="notes" placeholder="Tell us about your current spend, targets, or the problem you're seeing."></textarea>
           </div>
@@ -251,6 +258,7 @@ export const MODALS = `<!-- ---------- WhatsApp modal ---------- -->
             </button>
             <span class="fine">No lock-in.</span>
           </div>
+          <p class="fine mt-3">By sending this form you agree to our <a class="underline underline-offset-2 hover:text-brand" href="privacy-policy.html">Privacy Policy</a>.</p>
           <div class="form-status" id="auditStatus" role="status" aria-live="polite"></div>
         </form>
       </div>

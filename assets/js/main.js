@@ -266,6 +266,7 @@
     lead.append("Name", val("name"));
     lead.append("Brand", val("brand"));
     lead.append("Email", val("email"));
+    lead.append("Phone / WhatsApp", val("phone"));
     lead.append("Marketplaces", marketplaces.length ? marketplaces.join(", ") : "Not specified");
     lead.append("Message", val("notes") || "(none)");
     lead.append("Page", location.href);
@@ -283,10 +284,26 @@
     return lead;
   }
 
-  function showStatus(statusEl, kind, text, withFallback) {
+  // Plain-text copy of the lead, used to prefill WhatsApp / e-mail if the form can't be delivered.
+  function leadText(form, sourceLabel) {
+    const val = (name) => ((form.elements[name] && form.elements[name].value) || "").trim();
+    const marketplaces = $$('input[type="checkbox"]:checked', form).map((c) => c.value);
+    return [
+      `Hi Stegos, I'd like a ${sourceLabel === "Free Audit Modal" ? "free ad audit" : "conversation"}.`,
+      "",
+      `Name: ${val("name")}`,
+      `Brand: ${val("brand")}`,
+      `Email: ${val("email")}`,
+      `Phone / WhatsApp: ${val("phone")}`,
+      `Marketplaces: ${marketplaces.length ? marketplaces.join(", ") : "Not specified"}`,
+      `Message: ${val("notes") || "(none)"}`,
+    ].join("\n");
+  }
+
+  function showStatus(statusEl, kind, text, fallbackText) {
     statusEl.className = `form-status ${kind}`;
     statusEl.textContent = text;
-    if (!withFallback) return;
+    if (!fallbackText) return;
     const link = (href, label, external) => {
       const a = document.createElement("a");
       a.href = href;
@@ -299,10 +316,14 @@
     };
     statusEl.append(
       " ",
-      link(waUrl("Hi Stegos, I tried the website form but it did not go through."), "WhatsApp us", true),
-      " or email ",
-      link(`mailto:${CFG.email}`, CFG.email, false),
-      ".",
+      link(waUrl(fallbackText), "send it on WhatsApp", true),
+      " or ",
+      link(
+        `mailto:${CFG.email}?subject=${encodeURIComponent("Website enquiry")}&body=${encodeURIComponent(fallbackText)}`,
+        "by email",
+        false,
+      ),
+      " — your details are already filled in.",
     );
   }
 
@@ -314,6 +335,14 @@
     const honey = form.querySelector('input[name="_honey"]');
     if (honey && honey.value) {
       showStatus(statusEl, "success", "Thanks — we'll be in touch shortly.");
+      return;
+    }
+
+    // Phone / WhatsApp: needs at least 8 digits (spaces, +, - and brackets are fine).
+    const phone = form.elements.phone;
+    if (phone && phone.value.replace(/\D/g, "").length < 8) {
+      showStatus(statusEl, "error", "Please enter a valid phone or WhatsApp number (at least 8 digits).");
+      phone.focus();
       return;
     }
 
@@ -346,10 +375,10 @@
         form.reset();
         track("lead_submitted", { location: sourceLabel });
       } else {
-        showStatus(statusEl, "error", "We couldn't deliver your message just now. Please", true);
+        showStatus(statusEl, "error", "We couldn't deliver your message just now. Please", leadText(form, sourceLabel));
       }
     } catch (_) {
-      showStatus(statusEl, "error", "Network error — please check your connection, or", true);
+      showStatus(statusEl, "error", "Network error — please check your connection, or", leadText(form, sourceLabel));
     } finally {
       btn.disabled = false;
       btn.style.opacity = "";

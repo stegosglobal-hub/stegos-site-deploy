@@ -15,10 +15,10 @@
       grid-auto-flow: column;
       grid-template-columns: none;
       grid-auto-columns: 84%;
-      gap: 14px;
+      gap: 1.4rem;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
-      padding: 0 var(--gutter) 10px;
+      padding: 0 var(--gutter) 1rem;
       margin: 0 calc(var(--gutter) * -1);
       scrollbar-width: none;
     }
@@ -32,14 +32,14 @@
 
   /* ---------- case card ---------- */
   .case-card {
-    @apply relative isolate flex min-h-[460px] flex-col overflow-hidden rounded-card transition duration-[250ms] hover:-translate-y-1.5;
+    @apply relative isolate flex min-h-[37.72rem] flex-col overflow-hidden rounded-card transition duration-[250ms] hover:-translate-y-1.5;
     background: var(--tone);
   }
   .case-card:hover {
-    box-shadow: 0 0 44px -10px var(--a1), 0 28px 44px -28px rgba(10, 22, 48, 0.5);
+    box-shadow: 0 0 4.4rem -1rem var(--a1), 0 2.8rem 4.4rem -2.8rem rgba(10, 22, 48, 0.5);
   }
   .case-art {
-    @apply relative shrink-0 basis-[210px] px-[22px] pt-[22px];
+    @apply relative shrink-0 basis-[21rem] px-[2.2rem] pt-[2.2rem];
   }
   .case-art .art,
   .svc-art .art,
@@ -55,16 +55,16 @@
     transform: scale(1.07) rotate(-2deg);
   }
   .case-art .pills {
-    @apply relative z-[1] flex max-w-[calc(100%-60px)] flex-wrap gap-2;
+    @apply relative z-[1] flex max-w-[calc(100%-6rem)] flex-wrap gap-2;
   }
   .case-art .pill {
-    @apply text-[12.5px];
+    @apply text-[1.25rem];
   }
   .case-art .pill:not(.pill-solid) {
     color: var(--tone-ink);
   }
   .case-art .arrow-btn {
-    @apply absolute top-[18px] right-[18px] z-[1];
+    @apply absolute top-[1.8rem] right-[1.8rem] z-[1];
   }
   .case-card:hover .arrow-btn,
   .post-card:hover .arrow-btn,
@@ -78,10 +78,10 @@
     @apply rotate-45;
   }
   .case-body {
-    @apply m-0 mx-2.5 mb-2.5 flex flex-1 flex-col gap-3 rounded-[24px] bg-white p-6 pb-[22px];
+    @apply m-0 mx-2.5 mb-2.5 flex flex-1 flex-col gap-3 rounded-[2.4rem] bg-white p-6 pb-[2.2rem];
   }
   .case-body h3 {
-    @apply text-[clamp(26px,2.6vw,34px)] tracking-[-0.045em];
+    @apply text-[clamp(2.6rem,2.6vw,3.4rem)] tracking-[-0.045em];
   }
   .case-body h3 a::after,
   .post-card h3 a::after,
@@ -91,17 +91,17 @@
     @apply absolute inset-0 z-[2];
   }
   .case-body .cdesc {
-    @apply line-clamp-3 flex-1 text-[14.5px] leading-relaxed text-muted;
+    @apply line-clamp-3 flex-1 text-[1.45rem] leading-relaxed text-muted;
   }
   .case-stats {
     @apply grid grid-cols-3 gap-2 border-t border-line pt-3.5;
   }
   .cs-val {
-    @apply text-[clamp(20px,2vw,26px)] leading-[1.1] font-bold tracking-[-0.04em];
+    @apply text-[clamp(2rem,2vw,2.6rem)] leading-[1.1] font-bold tracking-[-0.04em];
     color: var(--tone-ink);
   }
   .cs-label {
-    @apply mt-[3px] text-[11.5px] font-medium text-muted;
+    @apply mt-[0.3rem] text-[1.15rem] font-medium text-muted;
   }
   .case-more {
     @apply inline-flex items-center gap-2 text-sm font-semibold;
@@ -118,7 +118,7 @@
       @apply m-2.5 ml-0 flex-1 basis-1/2 justify-center;
     }
     .results-grid > .case-card:first-child .case-art .art {
-      @apply -bottom-[30px] w-[92%];
+      @apply -bottom-[3rem] w-[92%];
     }
   }
 
@@ -128,29 +128,29 @@
     background: var(--tone);
   }
   .service-card:hover {
-    box-shadow: 0 0 40px -10px var(--a1), 0 28px 44px -28px rgba(10, 22, 48, 0.5);
+    box-shadow: 0 0 4rem -1rem var(--a1), 0 2.8rem 4.4rem -2.8rem rgba(10, 22, 48, 0.5);
   }
   .svc-art {
-    @apply relative h-[190px] px-[22px] pt-[22px];
+    @apply relative h-[19rem] px-[2.2rem] pt-[2.2rem];
   }
   .svc-art .art {
     @apply -right-2 -bottom-2.5 w-[74%];
   }
   .svc-body {
-    @apply mx-2.5 mb-2.5 flex flex-1 flex-col rounded-[24px] bg-white p-6 pb-[22px];
+    @apply mx-2.5 mb-2.5 flex flex-1 flex-col rounded-[2.4rem] bg-white p-6 pb-[2.2rem];
   }
   .service-list li {
-    @apply flex gap-2.5 text-[14.5px] leading-snug;
+    @apply flex gap-2.5 text-[1.45rem] leading-snug;
   }
   .service-list li::before {
     content: "";
-    @apply mt-px size-[18px] shrink-0 rounded-full;
+    @apply mt-px size-[1.8rem] shrink-0 rounded-full;
     background: var(--tone)
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a1228' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")
-      center / 11px no-repeat;
+      center / 1.1rem no-repeat;
   }
   .service-link {
-    @apply inline-flex items-center justify-between gap-2.5 rounded-full bg-ink py-3 pr-4 pl-5 text-[14.5px] font-semibold text-white transition-colors hover:bg-brand;
+    @apply inline-flex items-center justify-between gap-2.5 rounded-full bg-ink py-3 pr-4 pl-5 text-[1.45rem] font-semibold text-white transition-colors hover:bg-brand;
   }
 
   /* ---------- post (guide) card ---------- */
@@ -165,55 +165,55 @@
     @apply absolute top-4 right-4;
   }
   .post-art .lesson-no {
-    @apply absolute top-3.5 left-5 text-[54px] leading-none font-bold tracking-[-0.06em] text-white/85 italic;
+    @apply absolute top-3.5 left-5 text-[5.4rem] leading-none font-bold tracking-[-0.06em] text-white/85 italic;
   }
   .post-card {
     @apply relative isolate flex flex-col gap-3.5 transition-transform duration-[250ms] hover:-translate-y-1.5;
   }
   .post-card .post-tags {
-    @apply flex flex-wrap items-center gap-2.5 text-[13px] font-semibold text-muted;
+    @apply flex flex-wrap items-center gap-2.5 text-[1.3rem] font-semibold text-muted;
   }
   .post-card .post-tags .tag {
-    @apply px-3 py-[5px] text-[12.5px];
+    @apply px-3 py-[0.5rem] text-[1.25rem];
   }
   .post-card h3 {
-    @apply text-[clamp(22px,2vw,27px)] leading-[1.1] tracking-[-0.04em];
+    @apply text-[clamp(2.2rem,2vw,2.7rem)] leading-[1.1] tracking-[-0.04em];
   }
   .post-card p {
-    @apply line-clamp-2 text-[14.5px] leading-relaxed text-muted;
+    @apply line-clamp-2 text-[1.45rem] leading-relaxed text-muted;
   }
 
   /* ---------- small linked row (guides on case pages, case studies in guides) ---------- */
   .mini-card {
-    @apply relative flex items-center gap-4 rounded-tile px-[18px] py-4 transition duration-200 hover:translate-x-1.5 hover:shadow-[0_16px_30px_-20px_rgba(10,22,48,0.5)];
+    @apply relative flex items-center gap-4 rounded-tile px-[1.8rem] py-4 transition duration-200 hover:translate-x-1.5 hover:shadow-[0_1.6rem_3rem_-2rem_rgba(10,22,48,0.5)];
     background: var(--tone);
   }
   .mini-card .mini-ico {
     @apply grid size-14 shrink-0 place-items-center overflow-hidden rounded-2xl bg-white;
   }
   .mini-card .mini-ico svg {
-    @apply h-[42px] w-14;
+    @apply h-[4.2rem] w-14;
   }
   .mini-card .mini-ico .num {
-    @apply text-[22px] font-extrabold tracking-[-0.05em] italic;
+    @apply text-[2.2rem] font-extrabold tracking-[-0.05em] italic;
     color: var(--tone-ink);
   }
   .mini-card b {
-    @apply block text-[17px] leading-tight tracking-[-0.03em];
+    @apply block text-[1.7rem] leading-tight tracking-[-0.03em];
   }
   .mini-card small {
-    @apply mt-[3px] block text-[13px] font-medium text-soft;
+    @apply mt-[0.3rem] block text-[1.3rem] font-medium text-soft;
   }
   .mini-card .arrow-btn {
-    @apply size-[38px];
+    @apply size-[3.8rem];
   }
 
   /* ---------- shared bits used by home + guides hero panels ---------- */
   .plus-btn {
-    @apply grid size-[46px] place-items-center rounded-full bg-white shadow-[0_8px_20px_-10px_rgba(10,22,48,0.4)] transition duration-200;
+    @apply grid size-[4.6rem] place-items-center rounded-full bg-white shadow-[0_0.8rem_2rem_-1rem_rgba(10,22,48,0.4)] transition duration-200;
   }
   .plus-btn svg {
-    @apply size-[18px] fill-none stroke-current stroke-[2.2];
+    @apply size-[1.8rem] fill-none stroke-current stroke-[2.2];
     stroke-linecap: round;
   }
   a.side-card:hover .plus-btn {
@@ -221,13 +221,13 @@
   }
   .side-visual .art,
   .guide-cta .art {
-    @apply pointer-events-none absolute -top-2.5 -right-[30px] w-[82%] opacity-90;
+    @apply pointer-events-none absolute -top-2.5 -right-[3rem] w-[82%] opacity-90;
     --a1: #fff;
     --a2: rgba(255, 255, 255, 0.5);
     --a3: rgba(255, 255, 255, 0.22);
   }
   .big-pill {
-    @apply relative inline-flex items-center gap-2.5 self-start rounded-full bg-white px-[26px] py-4 text-lg font-bold tracking-[-0.03em] text-text shadow-[0_16px_34px_-14px_rgba(0,0,0,0.5)] transition-[gap,transform] duration-200 hover:-translate-y-0.5 hover:gap-4;
+    @apply relative inline-flex items-center gap-2.5 self-start rounded-full bg-white px-[2.6rem] py-4 text-lg font-bold tracking-[-0.03em] text-text shadow-[0_1.6rem_3.4rem_-1.4rem_rgba(0,0,0,0.5)] transition-[gap,transform] duration-200 hover:-translate-y-0.5 hover:gap-4;
   }
 
 }

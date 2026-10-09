@@ -1,14 +1,15 @@
 /* Base layer: page backdrop, type defaults, focus, shared type scale. */
 :root {
-  --gutter: clamp(18px, 4vw, 56px);
-  --nav-h: 76px;
+  --gutter: clamp(1.6rem, 3.4vw, 4.8rem);
+  --nav-h: 6.8rem;
   --sheet: #ffffff;
 }
 
 @layer base {
   html {
+    font-size: 62.5%; /* 1rem = 10px */
     scroll-behavior: smooth;
-    scroll-padding-top: 96px;
+    scroll-padding-top: 9.6rem;
     -webkit-text-size-adjust: 100%;
   }
   body {
@@ -16,6 +17,7 @@
     color: var(--color-text);
     background: #fff;
     -webkit-font-smoothing: antialiased;
+    font-size: 1.6rem;
     line-height: 1.55;
   }
   h1,
@@ -34,8 +36,8 @@
   }
   :focus-visible {
     outline: 2px solid var(--color-brand);
-    outline-offset: 3px;
-    border-radius: 6px;
+    outline-offset: 0.3rem;
+    border-radius: 0.6rem;
   }
   ::selection {
     background: var(--color-brand);
@@ -52,20 +54,20 @@
 
 @layer components {
   .skip-link {
-    @apply absolute -top-16 left-3 z-[400] rounded-full bg-ink px-[18px] py-2.5 text-[13px] font-semibold text-white transition-[top];
+    @apply absolute -top-16 left-3 z-[400] rounded-full bg-ink px-[1.8rem] py-2.5 text-[1.3rem] font-semibold text-white transition-[top];
   }
   .skip-link:focus {
-    top: 12px;
+    top: 1.2rem;
   }
   .hp-field {
-    @apply absolute -left-[9999px] size-px overflow-hidden;
+    @apply absolute -left-[999.9rem] size-px overflow-hidden;
   }
   .wrap {
-    @apply mx-auto w-full max-w-[1280px] px-[var(--gutter)];
+    @apply mx-auto w-full max-w-[128rem] px-[var(--gutter)];
   }
 
   .section {
-    padding-block: clamp(56px, 8vw, 120px);
+    padding-block: clamp(4.592rem, 6.56vw, 9.84rem);
   }
   .section.pt-0 {
     padding-top: 0;
@@ -73,13 +75,13 @@
 
   /* type scale */
   .display {
-    @apply text-[clamp(42px,7.2vw,104px)] leading-[0.96] font-bold tracking-[-0.052em];
+    @apply text-[clamp(3.444rem,5.904vw,8.528rem)] leading-[0.96] font-bold tracking-[-0.052em];
   }
   .h-section {
-    @apply text-[clamp(34px,5.4vw,72px)] leading-[0.98] font-bold tracking-[-0.048em];
+    @apply text-[clamp(2.788rem,4.428vw,5.904rem)] leading-[0.98] font-bold tracking-[-0.048em];
   }
   .h-mid {
-    @apply text-[clamp(30px,4.2vw,56px)] leading-none font-bold tracking-[-0.048em];
+    @apply text-[clamp(2.46rem,3.444vw,4.592rem)] leading-none font-bold tracking-[-0.048em];
   }
   .display em,
   .h-section em,

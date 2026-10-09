@@ -8,21 +8,21 @@
     @apply relative overflow-x-clip bg-white;
   }
   .scroll-progress {
-    @apply pointer-events-none fixed inset-x-0 top-0 z-[300] h-[3px] origin-left scale-x-0;
+    @apply pointer-events-none fixed inset-x-0 top-0 z-[300] h-[0.3rem] origin-left scale-x-0;
     background: var(--color-brand);
   }
 
   /* ---------- tags, pills, buttons ---------- */
   .tag,
   .pill {
-    @apply inline-flex w-fit items-center gap-2 rounded-full border-[1.5px] border-current px-3.5 py-[7px] text-[13px] leading-[1.1] font-semibold tracking-[-0.01em] whitespace-nowrap;
+    @apply inline-flex w-fit items-center gap-2 rounded-full border-[1.5px] border-current px-3.5 py-[0.7rem] text-[1.3rem] leading-[1.1] font-semibold tracking-[-0.01em] whitespace-nowrap;
   }
   .tag::before {
     content: "";
-    @apply size-[5px] shrink-0 rounded-full bg-current;
+    @apply size-[0.5rem] shrink-0 rounded-full bg-current;
   }
   .dotmark {
-    @apply inline-block size-[7px] rounded-full bg-amazon;
+    @apply inline-block size-[0.7rem] rounded-full bg-amazon;
   }
   .dotmark.blue {
     @apply bg-flipkart;
@@ -59,16 +59,16 @@
   }
 
   .btn {
-    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-[22px] py-3 text-[15px] font-semibold tracking-[-0.01em] whitespace-nowrap transition duration-200 active:scale-[0.97];
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-[2.2rem] py-3 text-[1.5rem] font-semibold tracking-[-0.01em] whitespace-nowrap transition duration-200 active:scale-[0.97];
   }
   .btn svg {
-    @apply size-[15px] shrink-0;
+    @apply size-[1.5rem] shrink-0;
   }
   .btn-cta,
   .modal-cta {
     color: #1b0f00;
     background: var(--color-amber);
-    box-shadow: 0 10px 24px -10px rgba(255, 140, 0, 0.55);
+    box-shadow: 0 1rem 2.4rem -1rem rgba(255, 140, 0, 0.55);
   }
   .btn-cta::after,
   .modal-cta::after {
@@ -80,7 +80,7 @@
   .modal-cta:hover {
     @apply -translate-y-0.5;
     background: #ffb13d;
-    box-shadow: 0 16px 30px -12px rgba(255, 140, 0, 0.6);
+    box-shadow: 0 1.6rem 3rem -1.2rem rgba(255, 140, 0, 0.6);
   }
   .btn-cta:hover::after,
   .modal-cta:hover::after {
@@ -96,32 +96,32 @@
     @apply px-7 py-4 text-base;
   }
   .icon-btn {
-    @apply inline-grid size-[46px] shrink-0 place-items-center rounded-full bg-ink text-white transition duration-200 hover:-translate-y-0.5 hover:bg-[#17a34a] hover:shadow-[0_10px_22px_-8px_rgba(23,163,74,0.7)];
+    @apply inline-grid size-[4.6rem] shrink-0 place-items-center rounded-full bg-ink text-white transition duration-200 hover:-translate-y-0.5 hover:bg-[#17a34a] hover:shadow-[0_1rem_2.2rem_-0.8rem_rgba(23,163,74,0.7)];
   }
   .icon-btn svg {
     @apply size-5;
   }
   .arrow-btn {
-    @apply inline-grid size-[46px] shrink-0 place-items-center rounded-full bg-white text-text shadow-[0_8px_20px_-10px_rgba(10,22,48,0.4)] transition duration-200;
+    @apply inline-grid size-[4.6rem] shrink-0 place-items-center rounded-full bg-white text-text shadow-[0_0.8rem_2rem_-1rem_rgba(10,22,48,0.4)] transition duration-200;
   }
   .arrow-btn svg {
-    @apply size-[18px];
+    @apply size-[1.8rem];
   }
   .link-u {
     @apply font-semibold underline decoration-[1.5px] underline-offset-4 hover:text-brand;
   }
   .link-arrow {
-    @apply inline-flex items-center gap-2 text-[15px] font-semibold transition-[gap,color] duration-200 hover:gap-3 hover:text-brand;
+    @apply inline-flex items-center gap-2 text-[1.5rem] font-semibold transition-[gap,color] duration-200 hover:gap-3 hover:text-brand;
   }
   .link-arrow svg {
-    @apply size-[15px];
+    @apply size-[1.5rem];
   }
   .chip {
-    @apply rounded-full border-[1.5px] border-text px-5 py-[9px] text-[14.5px] font-semibold transition duration-150 hover:-translate-y-px hover:bg-sky;
+    @apply rounded-full border-[1.5px] border-text px-5 py-[0.9rem] text-[1.45rem] font-semibold transition duration-150 hover:-translate-y-px hover:bg-sky;
   }
   .chip[aria-pressed="true"],
   .chip.active {
-    @apply border-ink bg-ink text-white shadow-[0_0_22px_-4px_rgba(61,105,255,0.8)];
+    @apply border-ink bg-ink text-white shadow-[0_0_2.2rem_-0.4rem_rgba(61,105,255,0.8)];
   }
 
   /* ---------- header + navigation ---------- */
@@ -131,7 +131,7 @@
   /* blur lives on a pseudo-element: backdrop-filter on the header would trap the fixed mobile menu */
   header.nav::before {
     content: "";
-    @apply absolute inset-0 -z-10 bg-white/90 opacity-100 backdrop-blur-[14px] backdrop-saturate-150 transition-opacity duration-300;
+    @apply absolute inset-0 -z-10 bg-white/90 opacity-100 backdrop-blur-[1.4rem] backdrop-saturate-150 transition-opacity duration-300;
   }
   @media (max-width: 1023.98px) {
     header.nav::before {
@@ -145,25 +145,25 @@
     @apply opacity-100;
   }
   .nav-inner {
-    @apply mx-auto flex h-[var(--nav-h)] w-full max-w-[1280px] items-center gap-3 px-[var(--gutter)] lg:gap-7;
+    @apply mx-auto flex h-[var(--nav-h)] w-full max-w-[128rem] items-center gap-3 px-[var(--gutter)] lg:gap-7;
   }
   .logo {
-    @apply inline-flex shrink-0 items-baseline gap-0.5 text-[26px] leading-none font-extrabold tracking-[-0.05em] italic lg:text-[30px];
+    @apply inline-flex shrink-0 items-baseline gap-0.5 text-[2.6rem] leading-none font-extrabold tracking-[-0.05em] italic lg:text-[3rem];
   }
   .logo b {
     @apply font-extrabold text-amber-2;
   }
   .logo small {
-    @apply ml-1 self-start pt-1 text-[10px] font-semibold tracking-normal text-muted not-italic max-[400px]:hidden;
+    @apply ml-1 self-start pt-1 text-[1rem] font-semibold tracking-normal text-muted not-italic max-[400px]:hidden;
   }
   .nav-links {
-    @apply flex flex-1 gap-1.5 text-[14.5px] font-medium;
+    @apply flex flex-1 gap-1.5 text-[1.45rem] font-medium;
   }
   .nav-links a {
     @apply rounded-full px-3 py-2 whitespace-nowrap transition hover:bg-sky;
   }
   .nav-links a sup {
-    @apply ml-[3px] align-super text-[9.5px] font-semibold text-muted;
+    @apply ml-[0.3rem] align-super text-[0.95rem] font-semibold text-muted;
   }
   .nav-links a[aria-current="page"],
   .nav-links a[aria-current="true"] {
@@ -176,7 +176,7 @@
     @apply ml-auto flex items-center gap-2.5;
   }
   .menu-btn {
-    @apply hidden rounded-full border-[1.5px] border-text px-5 py-[11px] text-[15px] font-semibold;
+    @apply hidden rounded-full border-[1.5px] border-text px-5 py-[1.1rem] text-[1.5rem] font-semibold;
   }
   .nav-links-whatsapp {
     @apply hidden;
@@ -184,7 +184,7 @@
 
   @media (max-width: 1023.98px) {
     :root {
-      --nav-h: 64px;
+      --nav-h: 6rem;
     }
     .menu-btn {
       @apply inline-flex;
@@ -199,13 +199,13 @@
       overflow: hidden;
     }
     .nav-links {
-      @apply invisible fixed inset-x-0 top-[var(--nav-h)] bottom-0 z-[39] flex-col gap-0 overflow-y-auto -translate-y-2.5 bg-white px-[22px] pt-2 pb-7 opacity-0 transition duration-200;
+      @apply invisible fixed inset-x-0 top-[var(--nav-h)] bottom-0 z-[39] flex-col gap-0 overflow-y-auto -translate-y-2.5 bg-white px-[2.2rem] pt-2 pb-7 opacity-0 transition duration-200;
     }
     .nav-links.mobile-open {
       @apply visible translate-y-0 opacity-100;
     }
     .nav-links a {
-      @apply rounded-none border-b border-line bg-transparent px-1 py-[18px] text-[clamp(26px,7vw,34px)] font-bold tracking-[-0.04em] text-text hover:bg-transparent;
+      @apply rounded-none border-b border-line bg-transparent px-1 py-[1.8rem] text-[clamp(2.6rem,7vw,3.4rem)] font-bold tracking-[-0.04em] text-text hover:bg-transparent;
     }
     .nav-links a sup {
       @apply text-xs;
@@ -219,23 +219,42 @@
     }
   }
 
+  /* smallest phones: keep logo, CTA and Menu on one line */
+  @media (max-width: 400px) {
+    .logo {
+      @apply text-[2.2rem];
+    }
+    .nav-actions {
+      @apply gap-1.5;
+    }
+    .nav-actions .btn-cta {
+      @apply px-3 py-2 text-[1.3rem];
+    }
+    .nav-actions .btn-cta svg {
+      @apply hidden;
+    }
+    .menu-btn {
+      @apply px-3.5 py-2 text-[1.4rem];
+    }
+  }
+
   /* ---------- forms ---------- */
   .field label,
   .mp-label {
-    @apply mb-2 block text-[13.5px] font-semibold;
+    @apply mb-2 block text-[1.35rem] font-semibold;
   }
   .field input,
   .form-textarea {
-    @apply min-h-[50px] w-full rounded-full border-[1.5px] border-line-2 bg-white px-5 py-[13px] text-[15px] text-text transition duration-150 placeholder:text-[#8a95b0] focus:border-brand focus:shadow-[0_0_0_4px_rgba(39,80,224,0.16)] focus:outline-none;
+    @apply min-h-[4.1rem] w-full rounded-full border-[1.5px] border-line-2 bg-white px-5 py-[1.3rem] text-[1.5rem] text-text transition duration-150 placeholder:text-[#8a95b0] focus:border-brand focus:shadow-[0_0_0_0.4rem_rgba(39,80,224,0.16)] focus:outline-none;
   }
   .form-textarea {
-    @apply min-h-[100px] resize-y rounded-[22px];
+    @apply min-h-[8.2rem] resize-y rounded-[2.2rem];
   }
   .mp-options {
-    @apply mb-[22px] flex flex-wrap gap-2.5;
+    @apply mb-[2.2rem] flex flex-wrap gap-2.5;
   }
   .mp-pill {
-    @apply relative flex cursor-pointer items-center gap-[9px] rounded-full border-[1.5px] border-line-2 bg-white px-[18px] py-2.5 text-[14.5px] font-semibold transition duration-150 select-none hover:-translate-y-px hover:border-brand;
+    @apply relative flex cursor-pointer items-center gap-[0.9rem] rounded-full border-[1.5px] border-line-2 bg-white px-[1.8rem] py-2.5 text-[1.45rem] font-semibold transition duration-150 select-none hover:-translate-y-px hover:border-brand;
   }
   .mp-pill input {
     @apply pointer-events-none absolute size-px opacity-0;
@@ -287,26 +306,26 @@
   }
   .on-dark-form .field input,
   .on-dark-form .form-textarea {
-    @apply border-white/35 bg-white/10 text-white placeholder:text-white/55 focus:border-white focus:shadow-[0_0_0_4px_rgba(255,255,255,0.18)];
+    @apply border-white/35 bg-white/10 text-white placeholder:text-white/55 focus:border-white focus:shadow-[0_0_0_0.4rem_rgba(255,255,255,0.18)];
   }
   .fine {
-    @apply text-[13px] text-muted;
+    @apply text-[1.3rem] text-muted;
   }
   .on-dark-form .fine {
     color: #a9b5d3;
   }
   .modal-cta {
-    @apply relative mt-[22px] flex w-full items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-[15px] text-[15.5px] font-bold transition duration-200;
+    @apply relative mt-[2.2rem] flex w-full items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-[1.5rem] text-[1.55rem] font-bold transition duration-200;
   }
   .modal-cta svg {
-    @apply size-[15px];
+    @apply size-[1.5rem];
   }
   .audit-footer .modal-cta,
   .form-submit-row .modal-cta {
     @apply mt-0 w-auto px-7 py-3.5 max-sm:w-full;
   }
   .form-status {
-    @apply mt-3.5 hidden rounded-2xl px-4 py-[13px] text-[14.5px] leading-normal font-medium;
+    @apply mt-3.5 hidden rounded-2xl px-4 py-[1.3rem] text-[1.45rem] leading-normal font-medium;
   }
   .form-status.success {
     @apply block border border-ok/40 bg-ok/15 text-[#066a4a];
@@ -326,27 +345,27 @@
 
   /* ---------- modals ---------- */
   .modal-overlay {
-    @apply fixed inset-0 z-[500] hidden items-center justify-center bg-[rgba(5,10,24,0.62)] p-5 backdrop-blur-[6px] max-sm:items-end max-sm:p-2.5;
+    @apply fixed inset-0 z-[500] hidden items-center justify-center bg-[rgba(5,10,24,0.62)] p-5 backdrop-blur-[0.6rem] max-sm:items-end max-sm:p-2.5;
   }
   .modal-overlay.open {
     @apply flex;
   }
   .modal-card,
   .audit-card {
-    @apply relative max-h-[calc(100dvh-32px)] w-full overflow-y-auto overscroll-contain rounded-[36px] max-sm:rounded-[30px];
+    @apply relative max-h-[calc(100dvh-3.2rem)] w-full overflow-y-auto overscroll-contain rounded-[3.6rem] max-sm:rounded-[3rem];
   }
   .modal-card {
-    @apply max-w-[440px] px-[30px] pt-9 pb-[30px] text-white max-sm:px-[22px] max-sm:pt-[30px] max-sm:pb-6;
+    @apply max-w-[44rem] px-[3rem] pt-9 pb-[3rem] text-white max-sm:px-[2.2rem] max-sm:pt-[3rem] max-sm:pb-6;
     background:
-      radial-gradient(360px 180px at 100% 0%, rgba(61, 105, 255, 0.5), transparent 70%), var(--color-ink);
-    box-shadow: 0 0 80px -10px rgba(61, 105, 255, 0.6);
+      radial-gradient(36rem 18rem at 100% 0%, rgba(61, 105, 255, 0.5), transparent 70%), var(--color-ink);
+    box-shadow: 0 0 8rem -1rem rgba(61, 105, 255, 0.6);
   }
   .audit-card {
-    @apply max-w-[600px] bg-white px-10 pt-10 pb-[34px] text-text shadow-[0_40px_90px_-20px_rgba(10,22,48,0.5)] max-sm:px-[22px] max-sm:pt-[30px] max-sm:pb-6;
+    @apply max-w-[60rem] bg-white px-10 pt-10 pb-[3.4rem] text-text shadow-[0_4rem_9rem_-2rem_rgba(10,22,48,0.5)] max-sm:px-[2.2rem] max-sm:pt-[3rem] max-sm:pb-6;
   }
   .modal-close,
   .audit-close {
-    @apply absolute top-[18px] right-[18px] grid size-10 place-items-center rounded-full text-sm transition;
+    @apply absolute top-[1.8rem] right-[1.8rem] grid size-10 place-items-center rounded-full text-sm transition;
   }
   .modal-close {
     @apply border-[1.5px] border-white/30 text-white hover:bg-white hover:text-ink;
@@ -355,37 +374,37 @@
     @apply border-[1.5px] border-line-2 hover:bg-ink hover:text-white;
   }
   .audit-eyebrow {
-    @apply mb-4 inline-flex items-center gap-2 text-[13px] font-semibold text-brand;
+    @apply mb-4 inline-flex items-center gap-2 text-[1.3rem] font-semibold text-brand;
   }
   .audit-eyebrow i {
     @apply size-1.5 rounded-full bg-current;
   }
   .audit-card h3 {
-    @apply mb-3 max-w-[420px] text-[clamp(28px,4vw,40px)] tracking-[-0.045em] max-sm:pr-11;
+    @apply mb-3 max-w-[42rem] text-[clamp(2.296rem,3.28vw,3.28rem)] tracking-[-0.045em] max-sm:pr-11;
   }
   .audit-card p.desc {
-    @apply mb-[26px] max-w-[460px] text-[15px] leading-relaxed text-muted;
+    @apply mb-[2.6rem] max-w-[46rem] text-[1.5rem] leading-relaxed text-muted;
   }
   .modal-card h3 {
-    @apply mb-2.5 text-[28px] tracking-[-0.04em];
+    @apply mb-2.5 text-[2.8rem] tracking-[-0.04em];
   }
   .modal-card p.desc {
-    @apply mb-[22px] text-[14.5px] leading-relaxed;
+    @apply mb-[2.2rem] text-[1.45rem] leading-relaxed;
     color: #a9b5d3;
   }
   .modal-eyebrow {
-    @apply mb-3 text-[13px] font-semibold;
+    @apply mb-3 text-[1.3rem] font-semibold;
     color: #ffd08a;
   }
   .modal-field {
     @apply border-t border-white/15 py-3.5;
   }
   .modal-field .flabel {
-    @apply mb-1 text-[12.5px] font-semibold;
+    @apply mb-1 text-[1.25rem] font-semibold;
     color: #8d9abd;
   }
   .modal-field .fval {
-    @apply text-[15px] font-semibold;
+    @apply text-[1.5rem] font-semibold;
   }
   .modal-field .fval a {
     @apply border-b-[1.5px] border-white/30 transition-colors hover:border-amber;
@@ -396,37 +415,37 @@
     @apply px-2 pb-2 min-[641px]:px-3.5 min-[641px]:pb-3.5 
   }
   .footer-panel {
-    @apply relative overflow-hidden rounded-panel bg-ink px-6 pt-8 pb-7 text-[#cdd7f1] sm:px-[clamp(24px,5vw,64px)] sm:pt-[clamp(28px,5vw,64px)];
+    @apply relative overflow-hidden rounded-panel bg-ink px-6 pt-8 pb-7 text-[#cdd7f1] sm:px-[clamp(1.968rem,4.1vw,5.248rem)] sm:pt-[clamp(2.296rem,4.1vw,5.248rem)];
   }
   .footer-panel::before {
     content: "";
-    @apply pointer-events-none absolute -bottom-[300px] -left-40 size-[520px];
+    @apply pointer-events-none absolute -bottom-[30rem] -left-40 size-[52rem];
     background: radial-gradient(circle, rgba(61, 105, 255, 0.45), transparent 70%);
   }
   .footer-word {
-    @apply mb-6 pb-3 text-[clamp(64px,11vw,150px)] leading-[0.95] font-extrabold tracking-[-0.065em] text-white italic;
+    @apply mb-6 pb-3 text-[clamp(5.248rem,9.02vw,12.3rem)] leading-[0.95] font-extrabold tracking-[-0.065em] text-white italic;
   }
   .footer-word b {
     @apply text-amber;
   }
   .footer-h {
-    @apply mb-1.5 text-[13px] font-semibold;
+    @apply mb-1.5 text-[1.3rem] font-semibold;
     color: #8d9abd;
   }
   .footer-col {
-    @apply grid content-start gap-2.5 text-[15px];
+    @apply grid content-start gap-2.5 text-[1.5rem];
   }
   .footer-col a {
-    @apply w-fit transition-colors hover:text-amber;
+    @apply w-fit max-w-full transition-colors [overflow-wrap:anywhere] hover:text-amber;
   }
   .footer-col sup {
-    @apply ml-[3px] text-[10px];
+    @apply ml-[0.3rem] text-[1rem];
     color: #8d9abd;
   }
 
   /* ---------- floating actions ---------- */
   .wa-fab {
-    @apply fixed right-4 bottom-4 z-[60] grid size-[52px] lg:right-[22px] lg:bottom-[22px] lg:size-14 place-items-center rounded-full bg-[#25d366] text-white shadow-[0_0_28px_0_rgba(37,211,102,0.55),0_14px_28px_-10px_rgba(37,211,102,0.7)] transition hover:-translate-y-[3px] hover:scale-105;
+    @apply fixed right-4 bottom-4 z-[60] grid size-[5.2rem] lg:right-[2.2rem] lg:bottom-[2.2rem] lg:size-14 place-items-center rounded-full bg-[#25d366] text-white shadow-[0_0_2.8rem_0_rgba(37,211,102,0.55),0_1.4rem_2.8rem_-1rem_rgba(37,211,102,0.7)] transition hover:-translate-y-[0.3rem] hover:scale-105;
   }
   .wa-fab svg {
     @apply size-7;
@@ -448,28 +467,28 @@
     }
   }
   .to-top {
-    @apply invisible fixed right-[22px] bottom-[76px] z-[60] grid size-11 translate-y-2 place-items-center rounded-full bg-ink text-white opacity-0 shadow-[0_0_22px_-2px_rgba(61,105,255,0.7),0_12px_24px_-10px_rgba(10,22,48,0.5)] transition duration-200 hover:bg-brand lg:right-7 lg:bottom-[90px];
+    @apply invisible fixed right-[2.2rem] bottom-[7.6rem] z-[60] grid size-11 translate-y-2 place-items-center rounded-full bg-ink text-white opacity-0 shadow-[0_0_2.2rem_-2px_rgba(61,105,255,0.7),0_1.2rem_2.4rem_-1rem_rgba(10,22,48,0.5)] transition duration-200 hover:bg-brand lg:right-7 lg:bottom-[9rem];
   }
   .to-top.visible {
     @apply visible translate-y-0 opacity-100;
   }
   .to-top svg {
-    @apply size-[18px];
+    @apply size-[1.8rem];
   }
   .cursor-ring {
-    @apply pointer-events-none fixed top-0 left-0 z-[9999] size-[30px] -translate-x-1/2 -translate-y-1/2 rounded-full border-[1.5px] border-brand opacity-0 transition-[width,height,background,opacity] duration-200;
+    @apply pointer-events-none fixed top-0 left-0 z-[9999] size-[3rem] -translate-x-1/2 -translate-y-1/2 rounded-full border-[1.5px] border-brand opacity-0 transition-[width,height,background,opacity] duration-200;
   }
   .cursor-ring.active {
     @apply opacity-100;
   }
   .cursor-ring.hovering {
-    @apply size-[54px] bg-brand/10;
+    @apply size-[5.4rem] bg-brand/10;
   }
   .cursor-ring.pressing {
     @apply size-5;
   }
   .cursor-dot {
-    @apply pointer-events-none fixed top-0 left-0 z-[9999] size-[5px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-2 opacity-0 transition-opacity;
+    @apply pointer-events-none fixed top-0 left-0 z-[9999] size-[0.5rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-2 opacity-0 transition-opacity;
   }
   .cursor-dot.active {
     @apply opacity-100;
@@ -482,50 +501,50 @@
     .chip,
     .mp-pill,
     .btn {
-      min-height: 44px;
+      min-height: 4.4rem;
     }
   }
 
   /* ---------- breadcrumb, CTA band ---------- */
   .breadcrumb {
-    @apply mb-[26px] flex flex-wrap gap-1.5 text-[13.5px] font-semibold text-muted;
+    @apply mb-[2.6rem] flex flex-wrap gap-1.5 text-[1.35rem] font-semibold text-muted;
   }
   .breadcrumb a {
-    @apply hover:text-brand hover:underline hover:underline-offset-[3px];
+    @apply hover:text-brand hover:underline hover:underline-offset-[0.3rem];
   }
   .breadcrumb .sep {
     @apply opacity-50;
   }
   .cta-band {
-    @apply flex flex-wrap items-center justify-between gap-7 rounded-panel p-[clamp(28px,5vw,64px)] text-white;
+    @apply flex flex-wrap items-center justify-between gap-7 rounded-panel p-[clamp(2.296rem,4.1vw,5.248rem)] text-white;
     background:
-      radial-gradient(500px 240px at 100% 0%, rgba(61, 105, 255, 0.5), transparent 70%), var(--color-ink);
-    box-shadow: 0 0 70px -20px rgba(61, 105, 255, 0.6);
+      radial-gradient(50rem 24rem at 100% 0%, rgba(61, 105, 255, 0.5), transparent 70%), var(--color-ink);
+    box-shadow: 0 0 7rem -2rem rgba(61, 105, 255, 0.6);
   }
   .cta-band h2 {
-    @apply max-w-[16ch] text-[clamp(30px,4.4vw,56px)] tracking-[-0.048em];
+    @apply max-w-[16ch] text-[clamp(2.46rem,3.608vw,4.592rem)] tracking-[-0.048em];
   }
   .cta-band p {
-    @apply mt-3 max-w-[520px] text-base leading-relaxed;
+    @apply mt-3 max-w-[52rem] text-base leading-relaxed;
     color: #a9b5d3;
   }
 
   /* inner-page hero (blog, case studies, case, guide) */
   .page-hero {
-    @apply relative overflow-hidden pt-[calc(var(--nav-h)+clamp(40px,6vw,88px))] pb-[clamp(28px,4vw,52px)];
+    @apply relative overflow-hidden pt-[calc(var(--nav-h)+clamp(3.28rem,4.92vw,7.216rem))] pb-[clamp(2.296rem,3.28vw,4.264rem)];
   }
   .page-hero::before {
     content: "";
-    @apply pointer-events-none absolute -top-[260px] -right-[200px] size-[560px] rounded-full;
+    @apply pointer-events-none absolute -top-[26rem] -right-[20rem] size-[56rem] rounded-full;
     background: radial-gradient(circle, var(--glow, rgba(61, 105, 255, 0.14)), transparent 68%);
   }
   .page-hero .wrap {
     @apply relative;
   }
   .page-hero h1 {
-    @apply max-w-[16ch] text-[clamp(42px,7.2vw,104px)] leading-[0.96] font-bold tracking-[-0.052em];
+    @apply max-w-[16ch] text-[clamp(3.444rem,5.904vw,8.528rem)] leading-[0.96] font-bold tracking-[-0.052em];
   }
   .page-hero .lede {
-    @apply mt-[22px] max-w-[600px] text-[clamp(16px,1.5vw,19px)] leading-relaxed text-muted;
+    @apply mt-[2.2rem] max-w-[60rem] text-[clamp(1.6rem,1.5vw,1.9rem)] leading-relaxed text-muted;
   }
 }

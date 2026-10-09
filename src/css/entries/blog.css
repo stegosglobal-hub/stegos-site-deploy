@@ -8,6 +8,7 @@
 
 @source "../../../blog.html";
 @source "../../../blog-*.html";
+@source "../../../privacy-policy.html";
 @source "../../../content/shell.mjs";
 @source "../../../assets/js/main.js";
 @source "../../../assets/js/motion.js";

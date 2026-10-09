@@ -1,6 +1,6 @@
 @layer components {
   .notfound-code {
-    @apply mb-[18px] text-[clamp(120px,26vw,300px)] leading-[0.85] font-extrabold tracking-[-0.07em] italic;
+    @apply mb-[1.8rem] text-[clamp(9.84rem,21.32vw,24.6rem)] leading-[0.85] font-extrabold tracking-[-0.07em] italic;
     background: linear-gradient(90deg, var(--color-amazon), var(--color-flipkart), var(--color-myntra));
     -webkit-background-clip: text;
     background-clip: text;
