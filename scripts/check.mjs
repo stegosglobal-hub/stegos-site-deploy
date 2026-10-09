@@ -106,6 +106,14 @@ for (const [file, { html }] of pages) {
   }
 }
 
+// --- lead form endpoint must be configured ----------------------------------
+{
+  const cfg = readFileSync(join(root, "assets/js/config.js"), "utf8");
+  const endpoint = (cfg.match(/formEndpoint:\s*"([^"]*)"/) || [])[1] || "";
+  if (!/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(endpoint))
+    fail(`assets/js/config.js: formEndpoint must be the Apps Script web-app URL (…/exec), got "${endpoint}" — see apps-script/README.md`);
+}
+
 // --- JS syntax ---------------------------------------------------------------
 for (const f of allFiles.filter((f) => f.endsWith(".js") || f.endsWith(".mjs"))) {
   try {

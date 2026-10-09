@@ -18,8 +18,9 @@ export const CSP = [
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src https://fonts.gstatic.com",
   "img-src 'self' data:",
-  "connect-src 'self' https://formsubmit.co",
-  "form-action 'self' https://formsubmit.co",
+  // the lead form posts to Google Apps Script, which answers via a redirect to googleusercontent.com
+  "connect-src 'self' https://script.google.com https://script.googleusercontent.com",
+  "form-action 'self'",
   "base-uri 'self'",
   "object-src 'none'",
 ].join("; ");

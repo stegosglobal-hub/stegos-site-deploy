@@ -256,32 +256,24 @@
     }
   }
 
-  // Builds the e-mail as an ordered list of labelled fields. FormSubmit's "table"
-  // template renders them as a two-column table in the inbox.
+  // The lead as plain form fields. The Google Apps Script (apps-script/Code.gs) turns them into a
+  // structured email + a Google Sheet row. Sent url-encoded so it is a "simple" cross-origin request.
   function buildLead(form, sourceLabel) {
     const val = (name) => ((form.elements[name] && form.elements[name].value) || "").trim();
     const marketplaces = $$('input[type="checkbox"]:checked', form).map((c) => c.value);
-    const lead = new FormData();
-    lead.append("Lead type", FORM_LABELS[sourceLabel] || sourceLabel);
-    lead.append("Name", val("name"));
-    lead.append("Brand", val("brand"));
-    lead.append("Email", val("email"));
-    lead.append("Phone / WhatsApp", val("phone"));
-    lead.append("Marketplaces", marketplaces.length ? marketplaces.join(", ") : "Not specified");
-    lead.append("Message", val("notes") || "(none)");
-    lead.append("Page", location.href);
-    lead.append("Submitted", istTimestamp());
-    lead.append("Device", window.matchMedia("(pointer: coarse)").matches ? "Mobile / touch" : "Desktop");
-    // FormSubmit control fields
-    lead.append("_subject", `New lead: ${val("brand") || val("name")} - ${sourceLabel}`);
-    lead.append("_replyto", val("email"));
-    lead.append("_template", "table");
-    lead.append("_captcha", "false");
-    lead.append(
-      "_autoresponse",
-      "Thanks for contacting Stegos Global. We have received your enquiry and will get back to you shortly.",
-    );
-    return lead;
+    return new URLSearchParams({
+      source: FORM_LABELS[sourceLabel] || sourceLabel,
+      name: val("name"),
+      brand: val("brand"),
+      email: val("email"),
+      phone: val("phone"),
+      marketplaces: marketplaces.join(", "),
+      message: val("notes"),
+      page: location.href,
+      submitted: istTimestamp(),
+      device: window.matchMedia("(pointer: coarse)").matches ? "Mobile / touch" : "Desktop",
+      _honey: val("_honey"),
+    });
   }
 
   // Plain-text copy of the lead, used to prefill WhatsApp / e-mail if the form can't be delivered.
@@ -352,13 +344,12 @@
     btn.textContent = "Sending…";
 
     try {
+      if (!CFG.formEndpoint) throw new Error("form endpoint not configured");
       const res = await fetch(CFG.formEndpoint, {
         method: "POST",
         body: buildLead(form, sourceLabel),
-        headers: { Accept: "application/json" },
       });
-      // FormSubmit can answer HTTP 200 without delivering (e.g. before the address
-      // is activated), so the JSON body is the source of truth, not res.ok.
+      // The script always answers with JSON { success: true | false }; that is the source of truth.
       let body = null;
       try {
         body = await res.json();

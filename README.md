@@ -46,5 +46,6 @@ Generated files (do not edit by hand): `blog*.html`, `case-*.html`, `case-studie
 * **Add a guide** → append to `content/blog.mjs` (and its `meta` entry), then `npm run build`.
 * **Add a case study** → add the card in `assets/js/data.js` and its story in `content/cases.mjs`.
 * **Change contact details / form email** → `assets/js/config.js`.
-* **Leads** go to the FormSubmit address in `config.js`. After the first deploy, submit the form once and
-  click the activation link FormSubmit emails to that address.
+* **Leads** go to a Google Apps Script on the Stegos Google account (`apps-script/Code.gs`): emailed as a
+  table and logged in a Google Sheet. Setup and redeploy steps: [`apps-script/README.md`](apps-script/README.md).
+  Its web-app URL is `formEndpoint` in `assets/js/config.js`.

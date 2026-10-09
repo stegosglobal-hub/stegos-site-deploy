@@ -39,8 +39,7 @@ export const privacy = {
       h: "Who it is shared with",
       body: `<p>We use a small number of service providers to run the site. They only process data to provide their service to us:</p>
 <ul>
-  <li><strong>FormSubmit</strong> — delivers form submissions to our inbox and sends you an automatic confirmation email.</li>
-  <li><strong>Google</strong> — hosts our business email (where your enquiry is stored) and serves the website's fonts (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google privacy policy</a>).</li>
+  <li><strong>Google</strong> — receives form submissions through a script on our own Google account, which emails them to us, records them in our private Google Sheet and sends you a confirmation email. Google also hosts our business email and serves the website's fonts (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google privacy policy</a>).</li>
   <li><strong>GitHub Pages</strong> — hosts this website (<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub privacy statement</a>).</li>
   <li><strong>WhatsApp</strong> — only if you choose to message us there (<a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener">WhatsApp privacy policy</a>).</li>
 </ul>

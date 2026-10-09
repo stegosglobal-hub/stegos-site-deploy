@@ -10,7 +10,8 @@ window.STEGOS = {
   whatsappNumber: "918796569474", // international format, digits only (no + or spaces)
   whatsappDisplay: "+91 87965 69474",
 
-  // Form delivery via FormSubmit.co (no backend needed).
-  // First real submission after deploy triggers an activation email to this address.
-  formEndpoint: "https://formsubmit.co/ajax/nishant@stegosglobal.com",
+  // Form delivery: Google Apps Script web app on the Stegos Google account (apps-script/Code.gs).
+  // It emails each lead to the address in Code.gs and logs it in the "Leads" Google Sheet.
+  // Paste the deployment's "Web app URL" (ends in /exec) here. See apps-script/README.md.
+  formEndpoint: "__APPS_SCRIPT_URL__",
 };
