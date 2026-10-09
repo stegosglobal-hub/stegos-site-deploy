@@ -13,5 +13,5 @@ window.STEGOS = {
   // Form delivery: Google Apps Script web app on the Stegos Google account (apps-script/Code.gs).
   // It emails each lead to the address in Code.gs and logs it in the "Leads" Google Sheet.
   // Paste the deployment's "Web app URL" (ends in /exec) here. See apps-script/README.md.
-  formEndpoint: "__APPS_SCRIPT_URL__",
+  formEndpoint: "https://script.google.com/macros/s/AKfycbyyMmUKANpp1rwPn-LYVMNOdC1i8LTrK9BCNeD8akF96bWLwx6DAbs-FyHMItMF9xj2Yw/exec",
 };
