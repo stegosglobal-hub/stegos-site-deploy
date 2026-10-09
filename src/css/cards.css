@@ -2,7 +2,7 @@
    A "tone" sets the colour world of a card (--tone background, --a1..3 art colours, --tone-ink text). */
 
 @layer components {
-  .tone-amazon { --tone: var(--color-peach); --a1: #ff9900; --a2: #ffc266; --a3: #ffe0b3; --tone-ink: #8a4b00; }
+  .tone-amazon { --tone: var(--color-peach); --a1: #d9a400; --a2: #f2cd5c; --a3: #fae6a6; --tone-ink: #6b4f00; }
   .tone-flipkart { --tone: var(--color-sky); --a1: #2874f0; --a2: #7aa9f7; --a3: #bcd3fb; --tone-ink: #1747a8; }
   .tone-myntra { --tone: var(--color-rose); --a1: #e8325a; --a2: #f58aa3; --a3: #fbc3d0; --tone-ink: #a3153a; }
   .tone-strategy { --tone: var(--color-mint); --a1: #0b9a6d; --a2: #5fcfa8; --a3: #a8e6cf; --tone-ink: #066a4a; }

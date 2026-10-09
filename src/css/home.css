@@ -91,7 +91,7 @@
     @apply size-[0.7rem] rounded-full bg-current;
   }
   .logo-item.amazon {
-    @apply bg-peach text-[#8a4b00];
+    @apply bg-peach text-[#6b4f00];
   }
   .logo-item.flipkart {
     @apply bg-sky text-[#1747a8];

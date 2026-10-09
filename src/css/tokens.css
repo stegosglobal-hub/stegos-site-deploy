@@ -18,14 +18,14 @@
   --color-amber-2: #ff7a00;
   --color-amber-ink: #e06400; /* orange text on white: 3.5:1 (amber-2 is only 2.6:1) */
   --color-ok: #0b9a6d;
-  --color-amazon: #ff9900;
+  --color-amazon: #d9a400; /* gold marker for Amazon — deliberately not Amazon orange (partner guidelines) */
   --color-flipkart: #2874f0;
   --color-myntra: #e8325a;
 
   /* pastel surfaces */
   --color-sky: #dbe7ff;
   --color-lilac: #e6e0ff;
-  --color-peach: #ffe6c9;
+  --color-peach: #fdefc4;
   --color-mint: #d3f1e6;
   --color-rose: #ffdce5;
   --color-cream: #fff3d6;

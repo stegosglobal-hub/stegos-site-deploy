@@ -39,7 +39,7 @@
   }
   .tag.tone-amazon,
   .pill.tone-amazon {
-    @apply border-transparent bg-peach text-[#8a4b00];
+    @apply border-transparent bg-peach text-[#6b4f00];
   }
   .tag.tone-flipkart,
   .pill.tone-flipkart {
