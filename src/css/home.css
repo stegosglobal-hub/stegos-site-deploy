@@ -47,8 +47,9 @@
     @apply my-1.5 text-[clamp(2.624rem,2.952vw,4.264rem)] leading-[1.05] font-bold tracking-[-0.05em];
     text-shadow: 0 0 2.8rem rgba(126, 160, 255, 0.5);
   }
-  .metric-value-big.orange {
-    color: var(--color-amber);
+  /* green, not amber: this card covers Amazon, and amber reads as Amazon orange */
+  .metric-value-big.accent {
+    color: #6fe3b5;
     text-shadow: none;
   }
   .bars {
