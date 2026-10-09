@@ -16,6 +16,7 @@
   --color-brand-2: #6a45e8;
   --color-amber: #ff9f1a;
   --color-amber-2: #ff7a00;
+  --color-amber-ink: #e06400; /* orange text on white: 3.5:1 (amber-2 is only 2.6:1) */
   --color-ok: #0b9a6d;
   --color-amazon: #ff9900;
   --color-flipkart: #2874f0;

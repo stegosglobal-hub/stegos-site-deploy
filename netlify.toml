@@ -1,8 +1,0 @@
-# Netlify: connect the repo (or run `npm run build` and drag-and-drop the dist/ folder).
-# Only dist/ is published, so dev files (scripts/, .claude/, .github/, package.json)
-# are never served.
-[build]
-  command = "npm run build"
-  publish = "dist"
-
-# Headers live in the `_headers` file (also read by Cloudflare Pages).

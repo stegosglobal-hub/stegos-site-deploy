@@ -1,10 +1,11 @@
-name: Deploy to GitHub Pages
+name: Build, check and deploy
 
-# Builds the site (generate pages -> Tailwind CSS -> GSAP -> cache stamps -> dist/)
-# and publishes ./dist. In the repo: Settings -> Pages -> Source = "GitHub Actions".
+# Pull requests only build + check. Pushes to main also publish ./dist to GitHub Pages
+# (repo Settings -> Pages -> Source = "GitHub Actions"; domain comes from CNAME).
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -13,7 +14,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -26,14 +27,19 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      # generate pages -> Tailwind CSS -> GSAP -> cache stamps -> dist/
       - run: npm run build
+      # broken links/anchors, SEO basics, CSP, stale stamps
       - run: npm run check
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+      - if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:

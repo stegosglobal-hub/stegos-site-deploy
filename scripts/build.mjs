@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
  * Copies only the files that should be public into ./dist.
- * Hosts (Vercel / Netlify / Cloudflare Pages) publish ./dist, so dev files —
- * scripts/, .claude/, .github/, package.json, config files — are never served.
+ * GitHub Pages publishes ./dist (see .github/workflows/deploy.yml), so dev files —
+ * scripts/, src/, content/, .github/, package.json — are never served.
  *
  *   node scripts/build.mjs        (also run by `npm run build`)
  *
@@ -16,7 +16,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
 
 // every *.html page at the root, plus these:
-const PUBLIC = ["assets", "robots.txt", "sitemap.xml", "_headers", "CNAME"];
+const PUBLIC = ["assets", "robots.txt", "sitemap.xml", "CNAME"];
 
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });

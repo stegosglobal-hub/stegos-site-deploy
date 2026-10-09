@@ -87,7 +87,7 @@
   h1 em,
   h2 em {
     font-style: italic;
-    color: var(--color-amber-2);
+    color: var(--color-amber-ink);
   }
   .on-dark em {
     color: var(--color-amber);

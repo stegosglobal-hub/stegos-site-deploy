@@ -170,7 +170,7 @@
     @apply text-ok;
   }
   .why-item:nth-child(3) .why-numeral {
-    @apply text-amber-2;
+    @apply text-amber-ink;
   }
   .quote-card {
     @apply flex min-h-[320px] flex-col rounded-card px-7 pt-8 pb-7 transition duration-[250ms] hover:-translate-y-1.5;
@@ -257,7 +257,7 @@
     color: var(--c, var(--color-brand));
   }
   .testi-card:nth-child(3n + 2) {
-    --c: var(--color-amber-2);
+    --c: var(--color-amber-ink);
   }
   .testi-card:nth-child(3n) {
     --c: var(--color-ok);

@@ -7,7 +7,7 @@
  *   - no duplicate ids on a page
  *   - no mojibake (broken UTF-8) in any text file
  *   - JSON-LD blocks are valid JSON
- *   - every inline <script> is allow-listed by hash in the CSP headers
+ *   - every page carries a Content-Security-Policy meta tag that allow-lists its inline scripts by hash
  *   - JS files parse
  * Run:  node scripts/check.mjs
  */
@@ -85,20 +85,24 @@ for (const [file, { html }] of pages) {
 
 // --- mojibake ---------------------------------------------------------------
 const textExt = /\.(html|css|js|mjs|json|xml|txt|md|svg|toml)$/;
-for (const f of allFiles.filter((f) => textExt.test(f) || f.endsWith("_headers"))) {
+for (const f of allFiles.filter((f) => textExt.test(f))) {
   const text = readFileSync(f, "utf8");
   if (/â€|â‚¹|Â[ ©·]|Ã./.test(text) && !f.endsWith("check.mjs"))
     fail(`${relative(root, f)}: looks like double-encoded UTF-8 (mojibake)`);
 }
 
-// --- CSP: inline scripts must be hash-allowed ------------------------------
-const policyFiles = ["_headers", "vercel.json"].map((n) => join(root, n)).filter(existsSync);
+// --- CSP: every page has the policy, and inline scripts are hash-allowed -----
 for (const [file, { html }] of pages) {
+  const rel = relative(root, file);
+  if (rel.startsWith("scripts")) continue;
+  const policy = (html.match(/<meta http-equiv="Content-Security-Policy" content="([^"]*)"/) || [])[1];
+  if (!policy) {
+    fail(`${rel}: missing <meta http-equiv="Content-Security-Policy"> (GitHub Pages cannot send headers)`);
+    continue;
+  }
   for (const m of html.matchAll(/<script(?![^>]*\ssrc=)(?![^>]*type="application\/ld\+json")[^>]*>([\s\S]*?)<\/script>/g)) {
     const hash = "sha256-" + createHash("sha256").update(m[1]).digest("base64");
-    for (const pf of policyFiles)
-      if (!readFileSync(pf, "utf8").includes(hash))
-        fail(`${relative(root, file)}: inline script hash ${hash} missing from ${relative(root, pf)} (CSP would block it)`);
+    if (!policy.includes(hash)) fail(`${rel}: inline script hash ${hash} missing from its CSP (the browser would block it)`);
   }
 }
 

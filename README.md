@@ -11,11 +11,14 @@ then one small stylesheet is compiled per page type.
 | `npm run build` | generate pages → compile CSS → copy GSAP → stamp cache hashes → write `dist/`. |
 | `npm run dev` | Serve the project at http://localhost:8080 (run `npm run build` first). |
 | `npm run css:watch` | Recompile Tailwind on every change while you edit. |
-| `npm run check` | Link / anchor / SEO / CSP checks (also run in CI). |
+| `npm run check` | Link / anchor / SEO / security-policy checks (also run in CI). |
 
-Deploy the **`dist/`** folder. On GitHub Pages this is automatic: `.github/workflows/deploy.yml` builds and publishes
-`dist/` on every push to `main` (Settings → Pages → Source = GitHub Actions; custom domain in `CNAME`).
-Vercel, Netlify and Cloudflare Pages also work (`npm run build`, publish `dist`). Only `dist/` is public, so `scripts/`, `src/`, `content/` and config files are never served.
+The site deploys to **GitHub Pages**: `.github/workflows/deploy.yml` builds and publishes `dist/` on every push to `main`
+(Settings → Pages → Source = GitHub Actions; the domain comes from `CNAME`). Pull requests run the same build and checks
+without publishing. Only `dist/` is public, so `scripts/`, `src/`, `content/` and config files are never served.
+
+GitHub Pages cannot send HTTP headers, so the Content-Security-Policy is a `<meta>` tag added to every page by
+`content/shell.mjs`. If you add a script, font host or API, allow it in `CSP` there.
 
 ## Where things live
 

@@ -4,8 +4,6 @@
  * and the form endpoint never need to be changed in the HTML.
  */
 window.STEGOS = {
-  siteName: "Stegos Global",
-  siteUrl: "https://stegosglobal.com", // used for canonical/OG tags in HTML — keep in sync
 
   // Contact details shown in the contact card, the WhatsApp modal and the footer.
   email: "nishant@stegosglobal.com",

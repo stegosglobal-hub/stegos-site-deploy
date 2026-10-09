@@ -3,8 +3,8 @@
  * Cache-busting without a bundler.
  * Rewrites every  assets/**.css|js  reference in the HTML files to carry a
  * content hash:  assets/js/main.js?v=3fa9c1d2
- * Because the URL changes whenever the file changes, assets can be served with
- * `Cache-Control: immutable` (see _headers) and visitors never get stale code.
+ * Because the URL changes whenever the file changes, browsers and CDNs can cache
+ * assets for a long time and visitors never get stale code.
  *
  *   node scripts/stamp.mjs          rewrite the HTML files
  *   node scripts/stamp.mjs --check  exit 1 if any reference is stale (CI)

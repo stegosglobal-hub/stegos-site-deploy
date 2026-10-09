@@ -1,14 +1,35 @@
 /**
- * Shared page furniture (sprite, header, footer, pop-ups, mobile bar, scripts).
+ * Shared page furniture (sprite, header, footer, pop-ups, scripts, security policy).
  * scripts/generate.mjs uses this for every generated page and injects it into
  * index.html between the <!--SHELL:...--> markers, so navigation lives in ONE place.
  */
+import { createHash } from "node:crypto";
 
-/** <head> assets: font + the page-type stylesheet (home | cases | blog | notfound) */
-export const assets = (bundle) => `<link rel="preconnect" href="https://fonts.googleapis.com" />
+/** the one inline script every page carries (adds the "js" class); its hash goes into the CSP */
+export const INLINE_JS = 'document.documentElement.classList.add("js");';
+
+/**
+ * GitHub Pages cannot send HTTP headers, so the Content-Security-Policy ships as a <meta> tag.
+ * (frame-ancestors is not allowed in meta; everything else is enforced.)
+ */
+export const CSP = [
+  "default-src 'self'",
+  `script-src 'self' 'sha256-${createHash("sha256").update(INLINE_JS).digest("base64")}'`,
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src https://fonts.gstatic.com",
+  "img-src 'self' data:",
+  "connect-src 'self' https://formsubmit.co",
+  "form-action 'self' https://formsubmit.co",
+  "base-uri 'self'",
+  "object-src 'none'",
+].join("; ");
+
+/** <head> assets: security policy + font + the page-type stylesheet (home | cases | blog | notfound) */
+export const assets = (bundle) => `<meta http-equiv="Content-Security-Policy" content="${CSP}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600;1,700;1,800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/${bundle}.css" />`;

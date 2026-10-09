@@ -7,8 +7,6 @@
   .tone-myntra { --tone: var(--color-rose); --a1: #e8325a; --a2: #f58aa3; --a3: #fbc3d0; --tone-ink: #a3153a; }
   .tone-strategy { --tone: var(--color-mint); --a1: #0b9a6d; --a2: #5fcfa8; --a3: #a8e6cf; --tone-ink: #066a4a; }
   .tone-brand { --tone: var(--color-lilac); --a1: #4a3cf0; --a2: #8f84f5; --a3: #c5bffa; --tone-ink: #3326b8; }
-  .bg-tone { background: var(--tone); }
-  .text-tone-ink { color: var(--tone-ink); }
 
   /* swipeable row on phones/tablets, normal grid on desktop (add lg:grid-cols-N) */
   @media (max-width: 1023.98px) {
