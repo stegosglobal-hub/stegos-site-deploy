@@ -81,8 +81,7 @@ export const privacy = {
   <li>We log it, investigate, and take steps to contain and fix the issue.</li>
   <li>If a client's data or account may be affected, we tell that client promptly and notify the relevant marketplace or authority where the rules require it.</li>
   <li>We tell you the outcome and keep a record of the report and what we did.</li>
-</ol>
-<p>Security researchers can also find our contact details at <a href="/.well-known/security.txt">/.well-known/security.txt</a>.</p>`,
+</ol>`,
     },
     {
       h: "Children",
