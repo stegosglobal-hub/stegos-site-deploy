@@ -10,7 +10,13 @@ export const terms = {
   sections: [
     {
       h: "Who we are",
-      body: `<p>This website is run by Stegos Global, a marketplace advertising agency based in India. Contact us at <a href="mailto:nishant@stegosglobal.com">nishant@stegosglobal.com</a> or on WhatsApp at +91 87965 69474.</p>`,
+      body: `<p>This website is run by Stegos Global, a sole proprietorship and marketplace advertising agency based in New Delhi, India.</p>
+<ul>
+  <li><strong>Business name:</strong> Stegos Global (proprietorship)</li>
+  <li><strong>Business address:</strong> Sector 22, Rohini, New Delhi, India</li>
+  <li><strong>GSTIN:</strong> 07CMTPG8761P2ZX</li>
+</ul>
+<p>Contact us at <a href="mailto:nishant@stegosglobal.com">nishant@stegosglobal.com</a> or on WhatsApp at +91 87965 69474.</p>`,
     },
     {
       h: "Independence and trademarks",

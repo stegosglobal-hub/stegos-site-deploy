@@ -166,7 +166,8 @@ export function footer({ caseCount = 0, postCount = 0 } = {}) {
           <span>© <span data-year>2026</span> Stegos Global — Built for India.</span>
           <span class="flex flex-wrap gap-x-4"><a class="underline underline-offset-2 hover:text-amber" href="privacy-policy.html">Privacy Policy</a><a class="underline underline-offset-2 hover:text-amber" href="terms.html">Terms of Use</a></span>
         </div>
-        <p class="relative mt-4 max-w-[96rem] text-[1.2rem] leading-relaxed text-[#8d9abd]">Stegos Global is an independent service provider and is not affiliated with or endorsed by Amazon, Flipkart or Myntra. Amazon, Amazon Ads, Flipkart, Myntra and related names are trademarks of their respective owners. Client results are anonymised by product category.</p>
+        <p class="relative mt-4 max-w-[96rem] text-[1.2rem] leading-relaxed text-[#8d9abd]">Stegos Global is a sole proprietorship. Business address: Sector 22, Rohini, New Delhi, India. GSTIN: 07CMTPG8761P2ZX.</p>
+        <p class="relative mt-2 max-w-[96rem] text-[1.2rem] leading-relaxed text-[#8d9abd]">Stegos Global is an independent service provider and is not affiliated with or endorsed by Amazon, Flipkart or Myntra. Amazon, Amazon Ads, Flipkart, Myntra and related names are trademarks of their respective owners. Client results are anonymised by product category.</p>
       </div>
     </footer>`;
 }
