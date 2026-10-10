@@ -4,7 +4,7 @@
 @layer components {
   /* ---------- hero ---------- */
   .hero {
-    @apply relative overflow-hidden;
+    @apply relative flex min-h-svh flex-col justify-center overflow-hidden;
   }
   .hero::before,
   .hero::after {
